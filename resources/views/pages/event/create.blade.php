@@ -1,11 +1,8 @@
-{{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ----------> --}}
+
 @extends('layout.master')
 
 @section('content')
-<div class="container-fluid col-xl-6 col-md-6 mt-4">
+<div class="container-fluid col-xl-5 col-md-3 mt-4">
     <div class="row justify-content-center">
         <div class="">
             <div class="card" style="width: 30rem;">
@@ -13,7 +10,8 @@
                   <h3>Create Event</h3>
                 </div>
                     <div class="card-body">
-                        <form class="form">
+                        <form class="form" method="POST" action="{{route('event.store')}}">
+                          @csrf
                             <fieldset>
                             <!-- Text input-->
                             <div class="form-group">
@@ -57,14 +55,17 @@
                             <div class="form-group">
                               <label class="control-label" for="user">Select Staff</label>
                               <div class="">
+                                
                                 <select id="selectbasic" name="user" class="form-control">
-                                  <option class="text-success" value="1">High Priorit</option>
+                                   @foreach ($users as $user)
+                                         <option  value="{{$user->id}}">{{$user->name}}</option>
+                                   @endforeach
                                 </select>
                               </div>
                             </div>
                             
                             <div class="card-footer mt-3">
-                                <input class="btn btn-outline-primary" type="submit" value="Save Event">
+                                <input class="btn btn-outline-primary form-control" type="submit" value="Save Event">
                             </div>
                             </fieldset>
                             </form> 
