@@ -33,6 +33,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             To-do List
                         </a>
+                        <a class="nav-link" href="{{ route('event.index') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Create Event
+                        </a>
                         
                     </nav>
                 </div>
