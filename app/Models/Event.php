@@ -9,4 +9,9 @@ class Event extends Model
 {
     use HasFactory;
     protected $guarded=[];
+
+
+    public function user(){
+        return $this->belongsTO(User::class,'user_id');
+    }
 }

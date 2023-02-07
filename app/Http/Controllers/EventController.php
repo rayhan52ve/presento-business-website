@@ -15,7 +15,10 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
+        
+        $events = Event::with('user')->get();
+        // $user = User::all();
+        // dd($events);
         return view('pages.event.index',compact('events'));
     }
 
@@ -26,7 +29,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        $users = User::all();
+        $users = User::pluck('name','id');
         return view('pages.event.create',compact('users'));
     }
 
@@ -38,9 +41,14 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'title'=>'required',
+        ]);
+
+
+
         Event::create($request->all());
-        return back()->withInput();
-        // return redirect()->route('event.index');
+        return redirect()->route('event.index');
     }
 
     /**
@@ -49,9 +57,12 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show($id)
     {
-        //
+        $event = Event::find($id);
+        $user = User::all();
+        // dd($user);
+        return view('pages.event.show',compact('event','user')); 
     }
 
     /**
@@ -60,9 +71,12 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function edit($id)
     {
-        //
+        $event = Event::find($id);
+        $users = User::pluck('name','id');
+        // dd($user);
+        return view('pages.event.edit',compact('event','users'));
     }
 
     /**
@@ -72,9 +86,11 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request,$id)
     {
-        //
+        $event = Event::find($id);
+        $event->update($request->all());
+        return redirect()->route('event.index');
     }
 
     /**
@@ -83,8 +99,11 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function destroy($id)
     {
-        //
+        $event = Event::find($id);
+        $event->delete();
+        return redirect()->route('event.index');
+        // return back()->withInput();
     }
 }

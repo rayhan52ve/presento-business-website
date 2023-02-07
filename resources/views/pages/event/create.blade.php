@@ -10,14 +10,30 @@
                   <h3>Create Event</h3>
                 </div>
                     <div class="card-body">
-                        <form class="form" method="POST" action="{{route('event.store')}}">
+                      @if($errors->any())
+                        <div class="alert alert-danger">
+                          <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                          </ul>
+                        </div>
+                      @endif
+
+
+
+                      {!! Form::open(['route'=>'event.store','method'=>'post']) !!}
+                        @include('pages.event.form')
+                        {!! Form::button('Save Event',['class'=>'btn btn-info mt-3 form-control','type'=>'submit']) !!}
+                        {!! Form::close() !!}
+                        {{-- <form class="form" method="POST" action="{{route('event.store')}}">
                           @csrf
                             <fieldset>
                             <!-- Text input-->
                             <div class="form-group">
                               <label class="control-label" for="title">Event Title</label>  
                               <div class="">
-                              <input id="event_name" name="title" type="text" placeholder="Event Title" class="form-control input-md">
+                              <input id="" name="title" type="text" placeholder="Event Title" class="form-control input-md">
                                 
                               </div>
                             </div>
@@ -53,12 +69,12 @@
                               </div>
                             </div>
                             <div class="form-group">
-                              <label class="control-label" for="user">Select Staff</label>
+                              <label class="control-label" for="user_id">Select Staff</label>
                               <div class="">
                                 
-                                <select id="selectbasic" name="user" class="form-control">
-                                   @foreach ($users as $user)
-                                         <option  value="{{$user->id}}">{{$user->name}}</option>
+                                <select id="" name="user_id" class="form-control">
+                                   @foreach ($users as $id=>$user)
+                                         <option  value="{{$id}}">{{$user->name}}</option>
                                    @endforeach
                                 </select>
                               </div>
@@ -68,7 +84,7 @@
                                 <input class="btn btn-outline-primary form-control" type="submit" value="Save Event">
                             </div>
                             </fieldset>
-                            </form> 
+                            </form>  --}}
                     </div>
                 
             </div>

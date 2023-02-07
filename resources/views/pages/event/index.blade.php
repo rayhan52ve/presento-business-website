@@ -2,12 +2,12 @@
 @extends('layout.master')
 
 @section('content')
-<div class="container-fluid col-xl-7 col-md-9 mt-4">
+<div class="container-fluid col-xl-9 col-md-12 mt-4">
     <div class="row justify-content-center">
         <div class="">
-            <div class="card" style="width: 50rem;">
+            <div class="card" style="width: 60rem;">
                 <div class="card-header">
-                  <h3><i class="fa-solid fa-calendar-lines-pen"></i>Events</h3>
+                  <h3><i class="fa-regular fa-calendar-days"></i> Events</h3>
                 </div>
                     <div class="card-body">
                       <table class="table table-sm">
@@ -29,19 +29,24 @@
                           <tr>
                             
                             <td>{{$sl++}}</td>
-                            <td>{{$event->title}}</td>
+                            <td><b>{{$event->title}}<b></td>
                             <td>{{$event->description}}</td>
                             <td>{{$event->start_date}}</td>
                             <td>{{$event->end_date}}</td>
-                            <td>{{$event->priority}}</td>
-                            <td>{{$event->user}}</td>
+                              @if($event->priority==1)
+                                <td class="text-danger"><b>High Priority<b></td>
+                              @elseif($event->priority==2)
+                                <td class="text-warning"><b>Medium Priority<b></td>
+                              @else
+                                <td class="text-success"><b>Low Priority<b></td>
+                              @endif
+                            <td>{{$event->user->name }}</td>
                             <td>
-                              <div class="btn-group-horizontal">
-                                <a href="" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></a>
-                                <a href="" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
-                                <a href="" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
-                              </div>
-                              
+                                <a href="{{route('event.show' ,$event->id)}}" class="btn btn-info btn-sm"><i class="fa-solid fa-eye"></i></a>
+                                <a href="{{route('event.edit', $event->id)}}" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                                {!! Form::open(['method'=>'delete','route'=>['event.destroy',$event->id]]) !!}
+                                {!! Form::button('<i class="fa-solid fa-trash-can"></i>',['class'=>'btn btn-danger btn-sm','type'=>'submit']) !!}
+                                {!! Form::close() !!} 
                             </td>
                           </tr>
                           @endforeach
