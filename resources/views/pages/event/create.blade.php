@@ -10,6 +10,7 @@
                   <h3>Create Event</h3>
                 </div>
                     <div class="card-body">
+                      
                       @if($errors->any())
                         <div class="alert alert-danger">
                           <ul>
@@ -19,8 +20,6 @@
                           </ul>
                         </div>
                       @endif
-
-
 
                       {!! Form::open(['route'=>'event.store','method'=>'post']) !!}
                         @include('pages.event.form')

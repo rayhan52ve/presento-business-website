@@ -10,6 +10,11 @@
                   <h3><i class="fa-regular fa-calendar-days"></i> Events</h3>
                 </div>
                     <div class="card-body">
+                      @if(session()->has('msg'))
+                        <div class="alert alert-{{session('cls')}}">
+                          {{session('msg')}}
+                        </div>
+                      @endif
                       <table class="table table-sm">
                         <thead class="thead-dark">
                           <tr>

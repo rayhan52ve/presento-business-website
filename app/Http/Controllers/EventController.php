@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\EventStoreRequest;
+use App\Http\Requests\EventUpdateRequest;
 
 class EventController extends Controller
 {
@@ -39,15 +41,29 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventStoreRequest $request)
     {
-        $this->validate($request,[
-            'title'=>'required',
-        ]);
+    //     $this->validate($request,[
+    //         'title'=>'required|max:10|min:2|string',
+    //         'description'=>'required|max:500|min:10|string',
+    //         'start_date'=>'required',
+    //         'end_date'=>'required',
+    //         'priority'=>'required',
+    //         'user_id'=>'required',
+    //     ],
+    //         $message=[
+    //             'user_id.required' => 'Please select a user.',
+    //             'priority.required' => 'Please select priority level.',
+    //             'start_date.required' => 'Please select a Starting Date.',
+    //             'end_date.required' => 'Please select Event Ending Date.',
+    //         ]
+    // );
 
 
 
         Event::create($request->all());
+        session()->flash('msg','Event Created Successfully');
+        session()->flash('cls','success');
         return redirect()->route('event.index');
     }
 
@@ -62,6 +78,7 @@ class EventController extends Controller
         $event = Event::find($id);
         $user = User::all();
         // dd($user);
+        // $event->load('user');
         return view('pages.event.show',compact('event','user')); 
     }
 
@@ -86,10 +103,12 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(EventUpdateRequest $request,$id)
     {
         $event = Event::find($id);
         $event->update($request->all());
+        session()->flash('msg','Event Updated Successfully');
+        session()->flash('cls','success');
         return redirect()->route('event.index');
     }
 
@@ -103,6 +122,8 @@ class EventController extends Controller
     {
         $event = Event::find($id);
         $event->delete();
+        session()->flash('msg','Event Deleted Successfully');
+        session()->flash('cls','danger');
         return redirect()->route('event.index');
         // return back()->withInput();
     }
