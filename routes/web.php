@@ -19,3 +19,5 @@ Route::get('todo',[TodoController::class,'index'])->name('todo.index');
 
 Route::resource('event',EventController::class);
 
+
+
