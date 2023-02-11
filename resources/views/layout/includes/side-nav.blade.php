@@ -37,6 +37,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Event List
                         </a>
+                        <a class="nav-link" href="{{ route('user.index') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            User List
+                        </a>
                         
                     </nav>
                 </div>

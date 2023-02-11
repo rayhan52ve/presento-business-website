@@ -75,11 +75,11 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $event = Event::find($id);
-        $user = User::all();
-        // dd($user);
-        // $event->load('user');
-        return view('pages.event.show',compact('event','user')); 
+      
+        $event = Event::with(['user'])->find($id);
+        //dd($event->with(['user']));
+        // dd($event);
+        return view('pages.event.show',compact('event')); 
     }
 
     /**

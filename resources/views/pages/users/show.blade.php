@@ -10,8 +10,11 @@
                   <h3><i class="fa-solid fa-calendar-week"></i> Event Info</h3>
                 </div>
                     <div class="card-body">
+                      
                       <table class="table table-sm">
+                        @foreach ($users->events as $event)
                         <tbody>
+                          
                           <tr>
                             <th scope="col">ID</th>
                             <td><b>{{$event->id}}<b></td>
@@ -42,8 +45,11 @@
                                 <td class="text-success"><b>Low Priority<b></td>
                               @endif
                           </tr>
-                          
-                      </table>                       
+                        </tbody>
+                        @endforeach 
+                            
+                      </table>
+                                            
                     </div>
                 
             </div>
@@ -51,39 +57,5 @@
         
     </div>
 </div>  
-
-<div class="container-fluid col-md-3 mt-4">
-  <div class="row">
-      <div class="">
-          <div class="card ">
-              <div class="card-header">
-                <h3><i class="fa-sharp fa-solid fa-user"></i> Staff Info</h3>
-              </div>
-                  <div class="card-body">
-                    <table class="table table-sm">
-                      <tbody>
-                        {{-- @foreach ($users as $user) --}}
-                        <tr>
-                          <th>Name</th>
-                          <td>{{$event->user->name}}</td>
-                        </tr>
-                        <tr>
-                          <th>Email</th>
-                          <td>{{$event->user->email}}</td>
-                        </tr>
-                        
-                        <tr>
-                          <th>Password</th>
-                          <td>{{$event->user->password}}</td>
-                        </tr>
-                        {{-- @endforeach --}}
-                        
-                    </table>                       
-                  </div>
-              
-          </div>
-      </div>
-      
-  </div>
-</div>  
+  
 @endsection

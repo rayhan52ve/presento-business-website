@@ -21,7 +21,7 @@
                         </div>
                       @endif
 
-                      {!! Form::open(['route'=>'event.store','method'=>'post']) !!}
+                        {!! Form::open(['route'=>'event.store','method'=>'post']) !!}
                         @include('pages.event.form')
                         {!! Form::button('Save Event',['class'=>'btn btn-info mt-3 form-control','type'=>'submit']) !!}
                         {!! Form::close() !!}
