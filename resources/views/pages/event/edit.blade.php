@@ -1,6 +1,8 @@
 
 @extends('layout.master')
 
+@section('page_title','Edit-events')
+
 @section('content')
 <div class="container-fluid col-xl-5 col-md-3 mt-4">
     <div class="row justify-content-center">

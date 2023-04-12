@@ -1,6 +1,8 @@
 
 @extends('layout.master')
 
+@section('page_title','Users List')
+
 @section('content')
 <div class="container-fluid col-xl-9 col-md-12 mt-4">
     <div class="row justify-content-center">

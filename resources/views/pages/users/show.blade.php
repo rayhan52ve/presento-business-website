@@ -1,6 +1,8 @@
 
 @extends('layout.master')
 
+@section('page_title','Users-events')
+
 @section('content')
 <div class="container-fluid col-md-6 mt-4">
     <div class="row">
