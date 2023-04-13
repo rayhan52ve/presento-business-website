@@ -13,7 +13,7 @@ class UserController extends Controller
     {
         $users = User::with('events')->latest()->get();
         // dd($users);
-        return view('pages.users.index',compact('users'));
+        return view('Backend.modules.users.index',compact('users'));
     }
 
     
@@ -24,7 +24,7 @@ class UserController extends Controller
         // $events = Event::all();
         // $user = User::all();
         // dd($event);
-        return view('pages.users.show',compact('users'));
+        return view('Backend.modules.users.show',compact('users'));
     }
 
     

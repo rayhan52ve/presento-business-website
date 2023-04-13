@@ -14,7 +14,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        return view('pages.todo.todoIndex');
+        return view('Backend.modules.todo.todoIndex');
     }
 
     /**

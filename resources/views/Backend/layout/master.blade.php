@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        @include('layout.includes.head')
+        @include('Backend.layout.includes.head')
     </head>
     <body class="sb-nav-fixed">
-        @include('layout.includes.top-nav')
+        @include('Backend.layout.includes.top-nav')
         <div id="layoutSidenav">
-            @include('layout.includes.side-nav')
+            @include('Backend.layout.includes.side-nav')
             <div id="layoutSidenav_content">
                 <main>
                     @yield('content')
                 </main>
-                @include('layout.includes.footer')
+                @include('Backend.layout.includes.footer')
             </div>
         </div>
-        @include('layout.includes.script')
+        @include('Backend.layout.includes.script')
     </body>
 </html>

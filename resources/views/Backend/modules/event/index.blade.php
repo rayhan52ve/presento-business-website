@@ -1,5 +1,5 @@
 
-@extends('layout.master')
+@extends('Backend.layout.master')
 
 @section('page_title','Event List')
 
@@ -27,6 +27,7 @@
                             <th scope="col">Ending Date</th>
                             <th scope="col">Priority</th>
                             <th scope="col">Member</th>
+                            <th scope="col">Created At</th>
                             <th scope="col">Action</th>
                           </tr>
                         </thead>
@@ -37,9 +38,9 @@
                             
                             <td>{{$sl++}}</td>
                             <td><b>{{$event->title}}<b></td>
-                            <td>{{$event->description}}</td>
-                            <td>{{$event->start_date}}</td>
-                            <td>{{$event->end_date}}</td>
+                            <td>{{substr($event->description,0,20)}}</td>
+                            <td>{{\Carbon\Carbon::create($event->start_date)->format('d-m-y')}}</td>
+                            <td>{{\Carbon\Carbon::create($event->end_date)->format('d-m-y')}}</td>
                               @if($event->priority==1)
                                 <td class="text-danger"><b>High Priority<b></td>
                               @elseif($event->priority==2)
@@ -48,6 +49,7 @@
                                 <td class="text-success"><b>Low Priority<b></td>
                               @endif
                             <td>{{$event->user->name }}</td>
+                            <td>{{$event->created_at->format('d-m-y h:i A') }}</td>
                             <td>
                                 <a href="{{route('event.show' ,$event->id)}}" class="btn btn-info btn-sm"><i class="fa-solid fa-eye"></i></a>
                                 <a href="{{route('event.edit', $event->id)}}" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>

@@ -21,7 +21,7 @@ class EventController extends Controller
         $events = Event::with('user')->get();
         // $user = User::all();
         // dd($events);
-        return view('pages.event.index',compact('events'));
+        return view('Backend.modules.event.index',compact('events'));
     }
 
     /**
@@ -32,7 +32,7 @@ class EventController extends Controller
     public function create()
     {
         $users = User::pluck('name','id');
-        return view('pages.event.create',compact('users'));
+        return view('Backend.modules.event.create',compact('users'));
     }
 
     /**
@@ -79,7 +79,7 @@ class EventController extends Controller
         $event = Event::with(['user'])->find($id);
         //dd($event->with(['user']));
         // dd($event);
-        return view('pages.event.show',compact('event')); 
+        return view('Backend.modules.event.show',compact('event')); 
     }
 
     /**
@@ -93,7 +93,7 @@ class EventController extends Controller
         $event = Event::find($id);
         $users = User::pluck('name','id');
         // dd($user);
-        return view('pages.event.edit',compact('event','users'));
+        return view('Backend.modules.event.edit',compact('event','users'));
     }
 
     /**
