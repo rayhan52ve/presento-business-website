@@ -1,5 +1,5 @@
 
-@extends('layout.master')
+@extends('Backend.layout.master')
 
 @section('page_title','Users List')
 
@@ -17,13 +17,12 @@
                           {{session('msg')}}
                         </div>
                       @endif
-                      <table class="table table-sm">
+                      <table class="table table-sm align-middle">
                         <thead class="thead-dark">
                           <tr>
                             <th scope="col">Sl</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
-                            <th scope="col">password</th>
                             <th scope="col">Event List</th>
                             
                             <th scope="col">Action</th>
@@ -37,7 +36,6 @@
                             <td>{{$sl++}}</td>
                             <td><b>{{$user->name}}<b></td>
                             <td>{{$user->email}}</td>
-                            <td>{{$user->password}}</td>
                             <td>
                               <ol>
                                 @foreach ($user->events as $event)

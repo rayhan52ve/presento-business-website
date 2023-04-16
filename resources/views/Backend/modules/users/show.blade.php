@@ -1,5 +1,5 @@
 
-@extends('layout.master')
+@extends('Backend.layout.master')
 
 @section('page_title','Users-events')
 
