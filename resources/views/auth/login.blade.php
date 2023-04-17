@@ -1,63 +1,74 @@
 
 @extends('auth.layout.app')
-@section("user")
-<div id="root" class="h-100">
-    <!-- Background Start -->
-    <div class="fixed-background"></div>
-    <!-- Background End -->
 
-    <section class="vh-100">
-      <div class="container py-5 h-100">
-        <div class="row d-flex align-items-center justify-content-center h-100">
-          <div class="col-md-8 col-lg-7 col-xl-6">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-              class="img-fluid" alt="Phone image">
-          </div>
-          <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-            <form method="post" action="{{route('login')}}" >
-              @csrf
-              <!-- Email input -->
-              <div class="form-outline mb-4">
-                <input type="email" name="email" id="form1Example13" class="form-control form-control-lg" />
-                <label class="form-label" for="form1Example13">Email address</label>
-              </div>
-    
-              <!-- Password input -->
-              <div class="form-outline mb-4">
-                <input type="password" name="password" id="form1Example23" class="form-control form-control-lg" />
-                <label class="form-label" for="form1Example23">Password</label>
-              </div>
-    
-              <div class="d-flex justify-content-around align-items-center mb-4">
-                <!-- Checkbox -->
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
-                  <label class="form-check-label" for="form1Example3"> Remember me </label>
-                </div>
-                <a href="#!">Forgot password?</a>
-              </div>
-    
-              <!-- Submit button -->
-              <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
-    
-              <div class="divider d-flex align-items-center my-4">
-                <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
-              </div>
-    
-              <a class="btn btn-primary btn-lg btn-block" style="background-color: #3b5998" href="#!"
-                role="button">
-                <i class="fab fa-facebook-f me-2"></i>Continue with Facebook
-              </a>
-              <a class="btn btn-primary btn-lg btn-block" style="background-color: #55acee" href="#!"
-                role="button">
-                <i class="fab fa-twitter me-2"></i>Continue with Twitter</a>
-    
-            </form>
-          </div>
+@section("user")
+
+<div class="limiter">
+  <div class="container-login100" style="background-image: url('Login/images/bg-01.jpg');">
+    <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+      <form method="post" action="{{route('login')}}" class="login100-form validate-form flex-sb flex-w">
+        @csrf
+        <span class="login100-form-title p-b-53">
+          Sign In With
+        </span>
+
+        <a href="#" class="btn-face m-b-20">
+          <i class="fa fa-facebook-official"></i>
+          Facebook
+        </a>
+
+        <a href="#" class="btn-google m-b-20">
+          <img src="{{asset('Login/images/icons/icon-google.png')}}" alt="GOOGLE">
+          Google
+        </a>
+        
+        <div class="p-t-31 p-b-9">
+          <span class="txt1">
+            Email
+          </span>
         </div>
-      </div>
-    </section>
+        <div class="wrap-input100 validate-input" data-validate = "Email is required">
+          <input class="input100" type="email" name="email" >
+          <span class="focus-input100"></span>
+        </div>
+        
+        <div class="p-t-13 p-b-9">
+          <span class="txt1">
+            Password
+          </span>
+
+          <a href="#" class="txt2 bo1 m-l-5">
+            Forgot?
+          </a>
+        </div>
+        <div class="wrap-input100 validate-input" data-validate = "Password is required">
+          <input class="input100" type="password" name="password" >
+          <span class="focus-input100"></span>
+        </div>
+
+        <div class="container-login100-form-btn m-t-17">
+          <button type="submit" class="login100-form-btn">
+            Sign In
+          </button>
+        </div>
+
+        <div class="w-full text-center p-t-55">
+          <span class="txt2">
+            Not a member?
+          </span>
+
+          <a href="{{route('register')}}" class="txt2 bo1">
+            Sign up now
+          </a>
+        </div>
+      </form>
+    </div>
   </div>
+</div>
+
+
+<div id="dropDownSelect1"></div>
+
 @endsection
 
 
