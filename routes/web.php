@@ -4,16 +4,20 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BackendController;
 use Illuminate\Support\Facades\Route;
 
 
+//Frontend
+Route::get('/',[FrontendController::class,'index'])->name('front.home');
+
 //Auth
-Route::match(['get','post'],'/',[UserController::class,'login'])->name('login');
+Route::match(['get','post'],'userlogin',[UserController::class,'login'])->name('login');
 Route::match(['get','post'],'register',[UserController::class,'register'])->name('register');
 
 Route::group(['middleware' => ['auth']],function(){
     //Backend Routes
-    Route::get('/dashboard',[FrontendController::class,'index'])->name('front.home');
+    Route::get('/dashboard',[BackendController::class,'index'])->name('dashboard');
     Route::get('logout', [UserController::class,'logout'])->name('logout');
 
     Route::get('todo',[TodoController::class,'index'])->name('todo.index');

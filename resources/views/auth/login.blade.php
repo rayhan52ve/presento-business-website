@@ -1,5 +1,6 @@
 
 @extends('auth.layout.app')
+@section('authtitle','User Login')
 
 @section("user")
 

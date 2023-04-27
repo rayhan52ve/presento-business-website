@@ -1,5 +1,7 @@
 
 @extends('auth.layout.app')
+@section('authtitle','Register')
+
 @section("user")
 <div id="root" class="h-100">
     <!-- Background Start -->

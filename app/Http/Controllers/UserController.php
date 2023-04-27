@@ -15,9 +15,9 @@ class UserController extends Controller
         if($request->isMethod('post')){
             $data = $request->input();
             if(Auth::attempt(['email' => $data['email'],'password' => $data['password']])){
-                return redirect()->route('front.home');
+                return redirect()->route('dashboard');
             }else{
-                return redirect('/')->with('flash_message','Invalid username or password');
+                return redirect('login')->with('flash_message','Invalid username or password');
             }
         }
 
@@ -34,7 +34,7 @@ class UserController extends Controller
             ]);
 
             if(Auth::attempt($request->only('email','password'))){
-                return redirect()->route('front.home');
+                return redirect()->route('dashboard');
             }
         }
 
