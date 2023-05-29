@@ -5,6 +5,7 @@ use App\Http\Controllers\TodoController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BackendController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -32,6 +33,7 @@ Route::group(['middleware' => ['auth']],function(){
 
     Route::resource('event',EventController::class)->except('create');
     Route::resource('user',UserController::class)->only(['index','show'])->middleware('admin');
+    Route::resource('category',CategoryController::class)->except('show');
 
 });
 
