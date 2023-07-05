@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth']],function(){
 
     Route::resource('event',EventController::class)->except('create');
     Route::resource('user',UserController::class)->only(['index','show'])->middleware('admin');
-    Route::resource('category',CategoryController::class)->except('show');
+    Route::resource('category',CategoryController::class)->except('show','create');
 
 });
 
