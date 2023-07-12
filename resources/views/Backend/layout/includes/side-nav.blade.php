@@ -8,7 +8,7 @@
                 </a>
                 <div class="sb-sidenav-menu-heading">Interface</div>
 
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('profile')}}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
                     Profile
                 </a>
