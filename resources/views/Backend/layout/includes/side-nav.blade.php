@@ -44,9 +44,13 @@
                 <div class="collapse" id="collapseCategory" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                        
+                        <a class="nav-link" href="{{ route('category.create') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Create
+                        </a>
                         <a class="nav-link" href="{{ route('category.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Categories
+                            List
                         </a>
 
                         

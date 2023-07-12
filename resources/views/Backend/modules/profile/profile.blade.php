@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{asset('css/profile/profile.css')}}">
 @endpush
 
-<div class="page-content page-container" id="page-content">
+<div class="page-content page-container mt-5" id="page-content">
     <div class="padding">
         <div class="row container d-flex justify-content-center">
 <div class="col-xl-6 col-md-12">
@@ -21,8 +21,8 @@
                         <div class="m-b-25">
                             <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
                         </div>
-                        <h6 class="f-w-600">Hembo Tingor</h6>
-                        <p>Web Designer</p>
+                        <h6 class="f-w-600">{{Auth::user()->name}}</h6>
+                        <p>Web Developer</p>
                         <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <p class="m-b-10 f-w-600">Email</p>
-                                <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
+                                <h6 class="text-muted f-w-400">{{Auth::user()->email}}</h6>
                             </div>
                             <div class="col-sm-6">
                                 <p class="m-b-10 f-w-600">Phone</p>

@@ -19,6 +19,7 @@ Route::match(['get','post'],'register',[UserController::class,'register'])->name
 Route::group(['middleware' => ['auth']],function(){
     //Backend Routes
     Route::get('/dashboard',[BackendController::class,'index'])->name('dashboard');
+    Route::get('/profile',[BackendController::class,'profile'])->name('profile');
     Route::get('logout', [UserController::class,'logout'])->name('logout');
 
     Route::get('todo',[TodoController::class,'index'])->name('todo.index');
@@ -33,7 +34,7 @@ Route::group(['middleware' => ['auth']],function(){
 
     Route::resource('event',EventController::class)->except('create');
     Route::resource('user',UserController::class)->only(['index','show'])->middleware('admin');
-    Route::resource('category',CategoryController::class)->except('show','create');
+    Route::resource('category',CategoryController::class)->except('show');
 
 });
 
