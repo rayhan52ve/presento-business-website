@@ -14,11 +14,11 @@
                     <a class="btn btn-sm btn-success m-2 " href="{{route('event.create')}}">Add</a>
                   </div>                </div>
                     <div class="card-body">
-                      @if(session()->has('msg'))
+                      {{-- @if(session()->has('msg'))
                         <div class="alert alert-{{session('cls')}}">
                           {{session('msg')}}
                         </div>
-                      @endif
+                      @endif --}}
                       <table class="table table-sm">
                         <thead class="thead-dark">
                           <tr>
@@ -57,8 +57,8 @@
                             <td>
                                 <a href="{{route('event.show' ,$event->id)}}" class="btn btn-info btn-sm ml-1 mt-1"><i class="fa-solid fa-eye"></i></a>
                                 <a href="{{route('event.edit', $event->id)}}" class="btn btn-success btn-sm ml-1 mt-1"><i class="fa-solid fa-pen-to-square"></i></a>
-                                {!! Form::open(['method'=>'delete','route'=>['event.destroy',$event->id]]) !!}
-                                {!! Form::button('<i class="fa-solid fa-trash-can"></i>',['class'=>'btn btn-danger btn-sm ml-1 mt-1','type'=>'submit']) !!}
+                                {!! Form::open(['method'=>'delete','id'=>'form_'.$event->id,'route'=>['event.destroy',$event->id]]) !!}
+                                {!! Form::button('<i class="fa-solid fa-trash-can"></i>',['data-id'=>$event->id,'class'=>'delete btn btn-danger btn-sm ml-1 mt-1','type'=>'button']) !!}
                                 {!! Form::close() !!} 
                             </td>
                           </tr>
@@ -71,6 +71,59 @@
         </div>
         
     </div>
-</div>  
+</div> 
+
+{{--Submit message--}}
+@if (session()->has('msg'))
+  @push('js')
+    <script>
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        toast: 'true',
+        title: '{{session('msg')}}',
+        showConfirmButton: false,
+        timer: 3000
+      })
+    </script>
+  @endpush
+@endif
+
+{{--Delete message--}}
+@if (session()->has('delmsg'))
+@push('js')
+<script>
+  Swal.fire(
+          'Deleted!',
+          '{{session('delmsg')}}',
+          'success'
+        )
+</script>
+@endpush
+@endif
+
+{{--Delete Permission--}}
+@push('js')
+  <script>
+    $('.delete').on('click',function(){
+      let id = $(this).attr('data-id')
+        Swal.fire({
+          title: 'Are you sure to delete?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $(`#form_${id}`).submit()
+            
+          }
+        })
+    })
+  </script>
+@endpush
+
 @endsection
 

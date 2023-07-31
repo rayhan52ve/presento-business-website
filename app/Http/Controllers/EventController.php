@@ -62,7 +62,7 @@ class EventController extends Controller
 
 
         Event::create($request->all());
-        session()->flash('msg','Event Created Successfully');
+        session()->flash('msg','Event Created Successfully.');
         session()->flash('cls','success');
         return redirect()->route('event.index');
     }
@@ -107,7 +107,7 @@ class EventController extends Controller
     {
         $event = Event::find($id);
         $event->update($request->all());
-        session()->flash('msg','Event Updated Successfully');
+        session()->flash('msg','Event Updated Successfully.');
         session()->flash('cls','success');
         return redirect()->route('event.index');
     }
@@ -122,8 +122,8 @@ class EventController extends Controller
     {
         $event = Event::find($id);
         $event->delete();
-        session()->flash('msg','Event Deleted Successfully');
-        session()->flash('cls','danger');
+        session()->flash('delmsg','Event Deleted Successfully.');
+        session()->flash('cls','error');
         return redirect()->route('event.index');
         // return back()->withInput();
     }
