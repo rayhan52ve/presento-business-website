@@ -20,10 +20,6 @@
                 </a>
                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                        <a class="nav-link" href="{{ route('todo.index') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            To-do List
-                        </a>
                         <a class="nav-link" href="{{ route('event.create') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Create Event

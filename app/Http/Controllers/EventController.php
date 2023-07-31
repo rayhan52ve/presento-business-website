@@ -43,7 +43,7 @@ class EventController extends Controller
      */
     public function store(EventStoreRequest $request)
     {
-    //     $this->validate($request,[
+    //     $request->validate([
     //         'title'=>'required|max:10|min:2|string',
     //         'description'=>'required|max:500|min:10|string',
     //         'start_date'=>'required',
@@ -92,7 +92,7 @@ class EventController extends Controller
     {
         $event = Event::find($id);
         $users = User::pluck('name','id');
-        // dd($user);
+        // dd($users);
         return view('Backend.modules.event.edit',compact('event','users'));
     }
 

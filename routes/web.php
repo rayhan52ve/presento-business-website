@@ -22,7 +22,6 @@ Route::group(['middleware' => ['auth']],function(){
     Route::get('/profile',[BackendController::class,'profile'])->name('profile');
     Route::get('logout', [UserController::class,'logout'])->name('logout');
 
-    Route::get('todo',[TodoController::class,'index'])->name('todo.index');
 
     Route::get('event/create',[EventController::class,'create'])->name('event.create')->middleware('admin');
     // Route::post('event',[EventController::class,'store'])->name('event.store');
@@ -34,7 +33,7 @@ Route::group(['middleware' => ['auth']],function(){
 
     Route::resource('event',EventController::class)->except('create');
     Route::resource('user',UserController::class)->only(['index','show'])->middleware('admin');
-    Route::resource('category',CategoryController::class)->except('show');
+    Route::resource('category',CategoryController::class);
 
 });
 

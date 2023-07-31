@@ -13,30 +13,18 @@
                 </div>
                     <div class="card-body">
                       
-                      @if($errors->any())
-                        <div class="alert alert-danger">
-                          <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{$error}}</li>
-                            @endforeach
-                          </ul>
-                        </div>
-                      @endif
+                        @if($errors->any())
+                          <div class="alert alert-danger">
+                            <ul>
+                              @foreach ($errors->all() as $error)
+                                  <li>{{$error}}</li>
+                              @endforeach
+                            </ul>
+                          </div>
+                        @endif
 
                         {!! Form::model($event,['route'=>['event.update',$event->id],'method'=>'put']) !!}
-                        @include('pages.event.form')
-                        {{-- {!! Form::label('title','Event Title',['class'=>'control-label']) !!}
-                        {!! Form::text('title',$event->title,['class'=>'form-control input-md','placeholder'=>'Event Title']) !!}
-                        {!! Form::label('description','Description',['class'=>'label-control']) !!}
-                        {!! Form::textarea('description',$event->description,['class'=>'form-control','rows'=>3]) !!}
-                        {!! Form::label('start_date','Start Date',['class'=>'control-label']) !!}
-                        {!! Form::date('start_date',\Carbon\Carbon::create($event->start_date),['class'=>'form-control']) !!}
-                        {!! Form::label('end_date','End Date',['class'=>'control-label']) !!}
-                        {!! Form::date('end_date', \Carbon\Carbon::create($event->end_date) ,['class'=>'form-control']) !!}
-                        {!! Form::label('priority','Priority',['class'=>'control-label']) !!}
-                        {!! Form::select('priority',[1=>'High Priority',2=>'Medium Priority',3=>'Low Priority'],$event->priority,['class'=>'form-select']) !!}
-                        {!! Form::label('user_id','Select Member',['class'=>'control-label']) !!}
-                        {!! Form::select('user_id',$user,$event->user_id,['class'=>'form-select']) !!} --}}
+                        @include('Backend.modules.event.form')
                         {!! Form::button('<i class="fa-solid fa-pen-to-square"></i>Update',['class'=>'btn btn-success mt-3','type'=>'submit']) !!}
                         {!! Form::close() !!}
                          {{-- <form class="form" method="POST" action="{{route('event.store')}}">
