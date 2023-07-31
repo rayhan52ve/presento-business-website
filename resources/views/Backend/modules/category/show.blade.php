@@ -43,7 +43,7 @@
                           </tr>
                         </tbody>  
                       </table>
-                      <a href="{{route('category.index')}}" class="btn btn-warning" >Back</a>                       
+                      <a href="{{route('category.index')}}" class="btn btn-outline-secondary" >Back</a>                       
                     </div>
                 
             </div>

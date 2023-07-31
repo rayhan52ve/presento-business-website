@@ -10,15 +10,17 @@
         <div class="col-xl-8 col-md-8">
             <div class="card m-2" style="width: 55rem;">
                 <div class="card-header">
-                  <h3><i class="fa-regular fa-calendar-days"></i> Categories</h3>
-                  <a class="btn btn-sm btn-success position-absolute top-0 end-0 m-3" href="{{route('category.create')}}">Add Event</a>
+                  <div class="d-flex justify-content-between">
+                    <h3><i class="fa-regular fa-calendar-days"></i> Categories</h3>
+                    <a class="btn btn-sm btn-success m-2 " href="{{route('category.create')}}">Add</a>
+                  </div>
                 </div>
                     <div class="card-body">
-                      @if(session()->has('msg'))
+                      {{-- @if(session()->has('msg'))
                         <div class="alert alert-{{session('cls')}}">
                           {{session('msg')}}
                         </div>
-                      @endif
+                      @endif --}}
                       <table class="table table-sm">
                         <thead class="thead-dark">
                           <tr>
@@ -47,10 +49,10 @@
                             <td>
                                 <a href="{{route('category.show', $category)}}" class="btn btn-info btn-sm ml-1 mt-1"><i class="fa-solid fa-eye"></i></a>
                                 <a href="{{route('category.edit', $category)}}" class="btn btn-success btn-sm ml-1 mt-1"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <form action="{{route('category.destroy',$category)}}" method="post">
+                                <form id="{{'form_'.$category->id}}" action="{{route('category.destroy',$category)}}" method="post">
                                   @csrf
                                   @method('DELETE')
-                                  <button class="btn btn-danger btn-sm ml-1 mt-1" type="submit" ><i class="fa-solid fa-trash-can"></i></button>
+                                  <button data-id="{{$category->id}}" class="delete btn btn-danger btn-sm ml-1 mt-1" type="button" ><i class="fa-solid fa-trash-can"></i></button>
                                 </form>
                             </td>
                           </tr>
@@ -60,9 +62,51 @@
                     </div>
                 
             </div>
-        </div>
-        
-    
-</div>  
+        </div> 
+</div> 
+
+@if(session()->has('msg'))
+@push('js')
+  <script>
+     Swal.fire({
+        position: 'top-end',
+        icon: '{{session('cls')}}',
+        toast: 'true',
+        title: '{{session('msg')}}',
+        showConfirmButton: false,
+        timer: 3000
+      })
+  </script>
+@endpush
+@endif
+
+
+@push('js')
+  <script>
+    $('.delete').on('click',function(){
+      let id = $(this).attr('data-id')
+      // console.log(id)
+
+        Swal.fire({
+          title: 'Are you sure you want to delete?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $(`#form_${id}`).submit()
+
+          }
+        })
+      })
+
+
+      
+  </script>
+@endpush
+
 @endsection
 
