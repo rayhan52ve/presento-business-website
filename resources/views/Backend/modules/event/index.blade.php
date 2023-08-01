@@ -95,11 +95,15 @@
 @if (session()->has('delmsg'))
 @push('js')
 <script>
-  Swal.fire(
-          'Deleted!',
-          '{{session('delmsg')}}',
-          'success'
-        )
+  Swal.fire({
+        position: 'center',
+        icon: '{{session('cls')}}',
+        // toast: 'true',
+        title:'Deleted!',
+        text: '{{session('delmsg')}}',
+        showConfirmButton: false,
+        timer: 2000
+      })
 </script>
 @endpush
 @endif

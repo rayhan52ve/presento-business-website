@@ -79,7 +79,7 @@
         toast: 'true',
         title: '{{session('msg')}}',
         showConfirmButton: false,
-        timer: 3000
+        timer: 2000
       })
   </script>
 @endpush

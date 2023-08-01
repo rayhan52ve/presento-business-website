@@ -123,7 +123,7 @@ class EventController extends Controller
         $event = Event::find($id);
         $event->delete();
         session()->flash('delmsg','Event Deleted Successfully.');
-        session()->flash('cls','error');
+        session()->flash('cls','success');
         return redirect()->route('event.index');
         // return back()->withInput();
     }

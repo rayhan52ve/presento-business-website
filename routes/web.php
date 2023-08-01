@@ -6,6 +6,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -34,6 +35,7 @@ Route::group(['middleware' => ['auth']],function(){
     Route::resource('event',EventController::class)->except('create');
     Route::resource('user',UserController::class)->only(['index','show'])->middleware('admin');
     Route::resource('category',CategoryController::class);
+    Route::resource('sub-category',SubCategoryController::class);
     Route::resource('tag',TagController::class);
 
 });

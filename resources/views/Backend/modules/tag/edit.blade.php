@@ -26,16 +26,16 @@
                          <form class="form" method="POST" action="{{route('tag.update',$tag)}}">
                           @method('PUT')
                           @csrf
-                          <label class="control-label" for="name">tag Name</label>  
+                          <label class="control-label" for="name">Tag Name</label>  
                           <input name="name" type="text" placeholder="tag Name" class="form-control" value="{{$tag->name}}">
 
                           <label class="control-label" for="slug">Slug</label>  
                           <input name="slug" type="text" placeholder="tag Slug" class="form-control" value="{{$tag->slug}}">
   
-                          <label class="control-label" for="order_by">Order By</label>  
+                          <label class="control-label" for="order_by">Tag Serial</label>  
                           <input name="order_by" type="number" placeholder="Enter Serial" class="form-control" value="{{$tag->order_by}}">
   
-                          <label class="control-label" for="status">Status</label>  
+                          <label class="control-label" for="status">Tag Status</label>  
                           <select name="status" class="form-control form-select">
                             <option >Select Status</option>
                             <option class="text-success" value="1" {{$tag->status==1 ? 'selected':'' }}>Active</option>
@@ -43,7 +43,7 @@
                           </select>
 
                             <div class="card-footer mt-3">
-                                <input class="btn btn-outline-success form-control" type="submit" value="Update Event">
+                                <input class="btn btn-outline-success form-control" type="submit" value="Update Tag">
                                 
                             </div>
                             </form> 

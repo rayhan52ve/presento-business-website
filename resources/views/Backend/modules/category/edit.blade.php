@@ -32,10 +32,10 @@
                           <label class="control-label" for="slug">Slug</label>  
                           <input name="slug" type="text" placeholder="Category Slug" class="form-control" value="{{$category->slug}}">
   
-                          <label class="control-label" for="order_by">Order By</label>  
+                          <label class="control-label" for="order_by">Category Serial</label>  
                           <input name="order_by" type="number" placeholder="Enter Serial" class="form-control" value="{{$category->order_by}}">
   
-                          <label class="control-label" for="status">Status</label>  
+                          <label class="control-label" for="status">Category Status</label>  
                           <select name="status" class="form-control form-select">
                             <option >Select Status</option>
                             <option class="text-success" value="1" {{$category->status==1 ? 'selected':'' }}>Active</option>
@@ -43,7 +43,7 @@
                           </select>
 
                             <div class="card-footer mt-3">
-                                <input class="btn btn-outline-success form-control" type="submit" value="Update Event">
+                                <input class="btn btn-outline-success form-control" type="submit" value="Update Category">
                                 
                             </div>
                             </form> 
