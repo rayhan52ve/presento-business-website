@@ -15,9 +15,13 @@ class UserController extends Controller
         if($request->isMethod('post')){
             $data = $request->input();
             if(Auth::attempt(['email' => $data['email'],'password' => $data['password']])){
+                session()->flash('msg','Logged in Sucessfully.');
+                session()->flash('cls','success');
                 return redirect()->route('dashboard');
             }else{
-                return redirect('login')->with('flash_message','Invalid username or password');
+                session()->flash('msg','Invalid username or password');
+                session()->flash('cls','error');
+                return redirect()->route('login');
             }
         }
 
@@ -34,10 +38,12 @@ class UserController extends Controller
             ]);
 
             if(Auth::attempt($request->only('email','password'))){
+                session()->flash('msg','Logged in Sucessfully.');
+                session()->flash('cls','success');
                 return redirect()->route('dashboard');
             }
         }
-
+        
         return view('auth.register');
     }
     

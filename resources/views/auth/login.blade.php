@@ -70,6 +70,21 @@
 
 <div id="dropDownSelect1"></div>
 
+@if(session()->has('msg'))
+@push('js')
+  <script>
+     Swal.fire({
+        position: 'center',
+        icon: '{{session('cls')}}',
+        toast: 'true',
+        title: '{{session('msg')}}',
+        showConfirmButton: false,
+        timer: 3000
+      })
+  </script>
+@endpush
+@endif
+
 @endsection
 
 

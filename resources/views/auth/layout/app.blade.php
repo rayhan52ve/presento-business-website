@@ -55,5 +55,7 @@
     <script src="{{asset('Login/vendor/countdowntime/countdowntime.js')}}"></script>
     <!--===============================================================================================-->
     <script src="{{asset('Login/js/main.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @stack('js')
   </body>
 </html>
