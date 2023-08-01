@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\TodoController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BackendController;
@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth']],function(){
     Route::resource('event',EventController::class)->except('create');
     Route::resource('user',UserController::class)->only(['index','show'])->middleware('admin');
     Route::resource('category',CategoryController::class);
+    Route::resource('tag',TagController::class);
 
 });
 

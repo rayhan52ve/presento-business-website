@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::get();
+        $categories = Category::orderBy('order_by')->get();
         return view('Backend.modules.category.index',compact('categories'));
     }
 
@@ -118,7 +118,7 @@ class CategoryController extends Controller
     {
         $category->delete();
         session()->flash('msg','Category Deleted Successfully.');
-        session()->flash('cls','error');
+        session()->flash('cls','success');
         return redirect()->route('category.index');
     }
     

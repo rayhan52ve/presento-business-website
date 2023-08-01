@@ -22,7 +22,7 @@
 
 <body>
 
- @include("Frontend.layouts.header")
+ @include("Frontend.layouts.topnav")
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">

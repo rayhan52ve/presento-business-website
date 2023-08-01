@@ -9,7 +9,7 @@
         <div class="">
             <div class="card h-100">
                 <div class="card-header">
-                  <h3><i class="fa-solid fa-calendar-week"></i> Event Info</h3>
+                  <h3><i class="fa-solid fa-user"></i> User Info</h3>
                 </div>
                     <div class="card-body">
                       

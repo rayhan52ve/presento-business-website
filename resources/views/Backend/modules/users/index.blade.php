@@ -9,7 +9,7 @@
         <div class="">
             <div class="card" style="width: 60rem;">
                 <div class="card-header">
-                  <h3><i class="fa-regular fa-calendar-days"></i> Events</h3>
+                  <h3><i class="fa-solid fa-user"></i> Users</h3>
                 </div>
                     <div class="card-body">
                       @if(session()->has('msg'))
