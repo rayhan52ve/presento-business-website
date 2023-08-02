@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
+
+use App\Http\Controllers\controller;
 
 use App\Models\Event;
 use App\Models\User;
@@ -123,7 +125,7 @@ class EventController extends Controller
         $event = Event::find($id);
         $event->delete();
         session()->flash('delmsg','Event Deleted Successfully.');
-        session()->flash('cls','success');
+        session()->flash('cls','info');
         return redirect()->route('event.index');
         // return back()->withInput();
     }

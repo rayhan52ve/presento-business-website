@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
+
+use App\Http\Controllers\controller;
 
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -130,7 +132,7 @@ class SubCategoryController extends Controller
     {
         $subCategory->delete();
         session()->flash('msg','Sub Category Deleted Successfully.');
-        session()->flash('cls','success');
+        session()->flash('cls','info');
         return redirect()->route('sub-category.index');
     }
 }

@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
+
+use App\Http\Controllers\controller;
 
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -123,7 +125,7 @@ class TagController extends Controller
     {
         $tag->delete();
         session()->flash('msg','Tag Deleted Successfully.');
-        session()->flash('cls','success');
+        session()->flash('cls','info');
         return redirect()->back();
     }
 }

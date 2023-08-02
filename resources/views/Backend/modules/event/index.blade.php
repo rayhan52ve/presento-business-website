@@ -102,7 +102,7 @@
         title:'Deleted!',
         text: '{{session('delmsg')}}',
         showConfirmButton: false,
-        timer: 2000
+        timer: 1000
       })
 </script>
 @endpush

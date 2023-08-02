@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -118,7 +119,7 @@ class CategoryController extends Controller
     {
         $category->delete();
         session()->flash('msg','Category Deleted Successfully.');
-        session()->flash('cls','success');
+        session()->flash('cls','info');
         return redirect()->route('category.index');
     }
     

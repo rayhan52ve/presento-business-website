@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\TagController;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\BackendController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\Backend\TagController;
+use App\Http\Controllers\Backend\EventController;
+use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\BackendController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 
