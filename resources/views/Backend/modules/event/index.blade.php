@@ -13,8 +13,8 @@
                     <h3><i class="fa-regular fa-calendar-days"></i> Events</h3>
                     <a class="btn btn-sm btn-success m-2 " href="{{route('event.create')}}">Add</a>
                   </div>                </div>
-                    <div class="card-body">
-                      {{-- @if(session()->has('msg'))
+                  <div class="card-body">
+                    {{-- @if(session()->has('msg'))
                         <div class="alert alert-{{session('cls')}}">
                           {{session('msg')}}
                         </div>

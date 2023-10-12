@@ -24,7 +24,7 @@ Route::group(['middleware' => ['auth']],function(){
     Route::get('logout', [UserController::class,'logout'])->name('logout');
 
 
-    Route::get('event/create',[EventController::class,'create'])->name('event.create')->middleware('admin');
+    // Route::get('event/create',[EventController::class,'create'])->name('event.create');
     // Route::post('event',[EventController::class,'store'])->name('event.store');
     // Route::get('event',[EventController::class,'index'])->name('event.index');
     // Route::get('event/{id}',[EventController::class,'show'])->name('event.show');
@@ -32,6 +32,8 @@ Route::group(['middleware' => ['auth']],function(){
     // Route::put('event/{id}',[EventController::class,'update'])->name('event.update');
     // Route::post('event/{id}',[EventController::class,'destroy'])->name('event.destroy');
 
+
+    Route::get('event/create',[EventController::class,'create'])->name('event.create')->middleware('admin');
     Route::resource('event',EventController::class)->except('create');
     Route::resource('user',UserController::class)->only(['index','show'])->middleware('admin');
     Route::resource('category',CategoryController::class);
