@@ -103,7 +103,7 @@
                 </div>
             </div>
         </div>
-        <div class="sb-sidenav-footer bg-success text-center">
+        <div class="sb-sidenav-footer text-dark text-center" style="background-color: #6eb76e">
             <div class="small">Logged in as:</div>
             {{Auth::user()->name}}
         </div>
