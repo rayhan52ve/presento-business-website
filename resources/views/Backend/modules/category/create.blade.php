@@ -33,7 +33,7 @@
 
                         <label class="control-label" for="status">Category Status</label>  
                         <select name="status" class="form-control form-select" value="{{old('status')}}">
-                          <option selected >Select Status</option>
+                          <option selected disabled>Select Status</option>
                           <option class="text-success" value="1">Active</option>
                           <option class="text-danger" value="2">Inactive</option>
                         </select>

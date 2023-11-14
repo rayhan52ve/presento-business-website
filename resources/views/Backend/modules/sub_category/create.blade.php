@@ -30,7 +30,7 @@
 
                         <label class="control-label" for="status">Select Category</label>  
                         <select name="category_id" class="form-control form-select" value="{{old('category_id')}}">
-                          <option selected >Select Category</option>
+                          <option selected disabled>Select Category</option>
                           @foreach ($categories as $category)
                           <option class="text-success" value="{{@$category->id}}">{{@$category->name}}</option>
                           @endforeach
@@ -41,7 +41,7 @@
 
                         <label class="control-label" for="status">Status</label>  
                         <select name="status" class="form-control form-select" value="{{old('status')}}">
-                          <option selected >Select Status</option>
+                          <option selected disabled>Select Status</option>
                           <option class="text-success" value="1">Active</option>
                           <option class="text-danger" value="2">Inactive</option>
                         </select>

@@ -16,7 +16,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-sm">
+                            <table class="table table-sm" id="DataTbl">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">Sl</th>
@@ -92,6 +92,19 @@
 
         @push('js')
             <script>
+                $(document).ready(function() {
+                    $('#DataTbl').DataTable({
+                        "paging": true,
+                        "pageLength": 10,
+                        "lengthMenu": [10, 25, 50, 100],
+                        "ordering": true,
+                        "searching": true,
+                        "info": true,
+                        "autoWidth": true,
+                        "responsive": true
+                    });
+                });
+
                 $('.delete').on('click', function() {
                     let id = $(this).attr('data-id')
                     // console.log(id)

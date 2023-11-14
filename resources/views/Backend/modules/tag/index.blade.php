@@ -21,7 +21,7 @@
                         </div>
                       @endif --}}
                         <div class="table-responsive">
-                            <table class="table table-sm">
+                            <table class="table table-sm" id="DataTbl">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">Sl</th>
@@ -56,8 +56,8 @@
                                                 <a href="{{ route('tag.edit', $tag) }}"
                                                     class="btn btn-success btn-sm ml-1 mt-1"><i
                                                         class="fa-solid fa-pen-to-square"></i></a>
-                                                <form id="{{ 'form_' . $tag->id }}" action="{{ route('tag.destroy', $tag) }}"
-                                                    method="post">
+                                                <form id="{{ 'form_' . $tag->id }}"
+                                                    action="{{ route('tag.destroy', $tag) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button data-id="{{ $tag->id }}"
@@ -94,6 +94,20 @@
 
         @push('js')
             <script>
+                $(document).ready(function() {
+                    $('#DataTbl').DataTable({
+                        "paging": true,
+                        "pageLength": 10,
+                        "lengthMenu": [10, 25, 50, 100],
+                        "ordering": true,
+                        "searching": true,
+                        "info": true,
+                        "autoWidth": true,
+                        "responsive": true
+                    });
+                });
+
+
                 $('.delete').on('click', function() {
                     let id = $(this).attr('data-id')
                     // console.log(id)

@@ -16,14 +16,17 @@
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li class="dropdown"><a href="#"><span><i class="fa-regular fa-user"></i></span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a target="_blank" href="{{route('login')}}">Login</a></li>
+              @if (@Auth::user()->id)
               <li><a target="_blank" href="{{route('dashboard')}}">Dashboard</a></li>
+              <li><a  href="{{route('logout')}}">Logout</a></li>
+              @else
+              <li><a target="_blank" href="{{route('login')}}">Login</a></li>
+              @endif
             </ul>
           </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="#about" class="get-started-btn scrollto">Get Started</a>
     </div>
   </header><!-- End Header -->

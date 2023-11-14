@@ -116,7 +116,7 @@
         @endpush
     @endif
 
-    {{-- Delete Permission --}}
+    {{-- Delete Permission & Datatable --}}
     @push('js')
         <script>
             $(document).ready(function() {
