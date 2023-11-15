@@ -1,5 +1,5 @@
 <div id="layoutSidenav_nav">
-    <nav class="sb-sidenav accordion sb-sidenav-dark" style="background-color: #009900" id="sidenavAccordion">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" style="background: -webkit-gradient(linear, left top, right top, from(#065f06), to(#48be3f));" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
                 <a class="nav-link {{ url()->current()==route('dashboard') ? 'active':'' }}" href="{{route('dashboard')}}">
@@ -81,6 +81,25 @@
                             Create
                         </a>
                         <a class="nav-link {{ url()->current()==route('sub-category.index') ? 'active':'' }}" href="{{ route('sub-category.index') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            List
+                        </a>
+                    </nav>
+                </div>
+
+                <a class="nav-link collapsed @if ( url()->current()==route('post.create') ||  url()->current()==route('post.index')) active @endif" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePost" aria-expanded="false" aria-controls="collapsePages">
+                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                    Post
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapsePost" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                       
+                        <a class="nav-link {{ url()->current()==route('post.create') ? 'active':'' }}" href="{{ route('post.create') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Create
+                        </a>
+                        <a class="nav-link {{ url()->current()==route('post.index') ? 'active':'' }}" href="{{ route('post.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             List
                         </a>

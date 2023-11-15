@@ -4,9 +4,9 @@
 @section('page_title','Create-tag')
 
 @section('content')
-<div class="container-fluid col-xl-8 col-md-8 mt-5">
+<div class="container-fluid col-xl-5 col-md-5 mt-5">
     <div class="row justify-content-center">
-        <div class="card m-4" style="width: 35rem;">
+        <div class="card m-4">
             <div class="card-header">
               <h3><i class="fa-solid fa-tag"></i> Create Tag</h3>
             </div>

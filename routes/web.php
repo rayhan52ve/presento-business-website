@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\EventController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,7 @@ Route::group(['middleware' => ['auth']],function(){
     Route::resource('category',CategoryController::class);
     Route::resource('sub-category',SubCategoryController::class);
     Route::resource('tag',TagController::class);
+    Route::resource('post',PostController::class);
 
 });
 

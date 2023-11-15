@@ -4,9 +4,9 @@
 @section('page_title','Create-sub-category')
 
 @section('content')
-<div class="container-fluid col-xl-8 col-md-8 mt-5">
+<div class="container-fluid col-xl-5 col-md-5 mt-5">
     <div class="row justify-content-center">
-        <div class="card m-4" style="width: 35rem;">
+        <div class="card m-4">
             <div class="card-header">
               <h3>Create Sub Category</h3>
             </div>

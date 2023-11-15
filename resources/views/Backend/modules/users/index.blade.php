@@ -3,7 +3,7 @@
 @section('page_title', 'Users List')
 
 @section('content')
-    <div class="container-fluid col-xl-11 col-md-11 mt-5">
+    <div class="container-fluid col-xl-11 col-md-11 mt-3">
         <div class="row justify-content-center">
             <div class="">
                 <div class="card">
@@ -12,7 +12,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-sm align-middle">
+                            <table class="table table-sm align-middle" id="DataTbl">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">Sl</th>
@@ -55,4 +55,20 @@
 
         </div>
     </div>
+    @push('js')
+        <script>
+            $(document).ready(function() {
+                    $('#DataTbl').DataTable({
+                        "paging": true,
+                        "pageLength": 10,
+                        "lengthMenu": [10, 25, 50, 100],
+                        "ordering": true,
+                        "searching": true,
+                        "info": true,
+                        "autoWidth": true,
+                        "responsive": true
+                    });
+                });
+        </script>
+    @endpush
 @endsection
