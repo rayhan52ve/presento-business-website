@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 
 //Frontend
 Route::get('/',[FrontendController::class,'index'])->name('front.home');
+Route::get('/blog',[FrontendController::class,'blog'])->name('front.blog');
+Route::get('/single-blog',[FrontendController::class,'singleBlog'])->name('front.singleBlog');
+Route::get('/portfolio-details',[FrontendController::class,'portfolioDetails'])->name('front.portfolioDetails');
+//Frontend
 
 //Auth
 Route::match(['get','post'],'userlogin',[UserController::class,'login'])->name('login');

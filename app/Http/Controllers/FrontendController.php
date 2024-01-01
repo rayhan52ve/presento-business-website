@@ -16,5 +16,20 @@ class FrontendController extends Controller
         return view('Frontend.modules.home');
     }
 
+    public function blog()
+    {
+        return view('Frontend.modules.blog');
+    }
+
+    public function singleBlog()
+    {
+        return view('Frontend.modules.single_blog');
+    }
+
+    public function portfolioDetails()
+    {
+        return view('Frontend.modules.portfolio-details');
+    }
+
     
 }

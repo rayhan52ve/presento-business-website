@@ -7,13 +7,15 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li>
+            <a class="nav-link scrollto" href="{{ url()->current() != route('front.home') ? route('front.home'):'#hero'}}">Home</a>
+          </li>
+          <li><a class="nav-link scrollto" href="{{ url()->current() != url('front.home') ? route('front.home').'#about':'#about'}}">About</a></li>
+          <li><a class="nav-link scrollto" href="{{ url()->current() != route('front.home') ? route('front.home').'#services':'#services'}}">Services</a></li>
+          <li><a class="nav-link scrollto " href="{{ url()->current() != route('front.home') ? route('front.home').'#portfolio':'#portfolio'}}">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="{{ url()->current() != route('front.home') ? route('front.home').'#team':'#team'}}">Team</a></li>
+          <li><a class="{{url()->current() == route('front.blog') ? 'active':'' }}" href="{{route('front.blog')}}">Blog</a></li>
+          <li><a class="nav-link scrollto" href="{{ url()->current() != route('front.home') ? route('front.home').'#contact':'#contact'}}">Contact</a></li>
           <li class="dropdown"><a href="#"><span><i class="fa-regular fa-user"></i></span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               @if (@Auth::user()->id)

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Faker\Core\Number;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +20,10 @@ class EventFactory extends Factory
         return [
             'title'=>fake()->title(),
             'description'=>fake()->name(),
-            'user_id'=>1
+            'user_id'=>fake()->numberBetween($int1 = 1,$int2 = 10),
+            'start_date'=>fake()->date(),
+            'end_date'=>fake()->date(),
+            'priority'=>fake()->numberBetween($int1 = 1,$int2 = 3),
         ];
     }
 }
