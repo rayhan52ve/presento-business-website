@@ -32,9 +32,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="control-label" for="status">Select Category</label>
-                                <select name="category_id" class="form-control form-select"
+                                <select name="category_id" id="category_id" class="form-control form-select"
                                     value="{{ old('category_id') }}">
-                                    <option selected>Select Category</option>
+                                    <option selected disabled>Select Category</option>
                                     @foreach ($categories as $category)
                                         <option class="text-success" value="{{ $category->id }}">{{ $category->name }}
                                         </option>
@@ -43,9 +43,9 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="control-label" for="status">Select Sub-Category</label>
-                                <select name="subCategory_id" class="form-control form-select">
-                                    <option selected>Select Sub-Category</option>
-                                    <option class="text-success" value="">
+                                <select name="subCategory_id" id="subCategory_id" class="form-control form-select">
+                                    <option selected disabled>Select Sub-Category</option>
+
                                     </option>
                                 </select>
                             </div>
@@ -66,6 +66,23 @@
 
             </div>
         </div>
-
     </div>
+
+    @push('js')
+        <script>
+            $('#category_id').on('change',function(){
+                let category_id = $(this).val();
+                let sub_categories 
+                $('#subCategory_id').empty()
+                $('#subCategory_id').append(`<option selected disabled>Select Sub-Category</option>`)
+                axios.get(window.location.origin+'/admin/get-subcategory/'+category_id).then(res=>{
+                    sub_categories = res.data
+
+                    sub_categories.map((sub_category, index) => {
+                        $('#subCategory_id').append(`<option value="${sub_category.id}">${sub_category.name}</option>`);
+                    })
+                })
+            })
+        </script>
+    @endpush
 @endsection

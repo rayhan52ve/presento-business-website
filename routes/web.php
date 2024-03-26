@@ -22,7 +22,7 @@ Route::get('/portfolio-details',[FrontendController::class,'portfolioDetails'])-
 Route::match(['get','post'],'userlogin',[UserController::class,'login'])->name('login');
 Route::match(['get','post'],'register',[UserController::class,'register'])->name('register');
 
-Route::group(['middleware' => ['auth']],function(){
+Route::group(['middleware' => ['auth'],'prefix'=>'admin'],function(){
     //Backend Routes
     Route::get('/dashboard',[BackendController::class,'index'])->name('dashboard');
     Route::get('/profile',[BackendController::class,'profile'])->name('profile');
@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth']],function(){
     Route::resource('user',UserController::class)->only(['index','show'])->middleware('admin');
     Route::resource('category',CategoryController::class);
     Route::resource('sub-category',SubCategoryController::class);
+    Route::get('get-subcategory/{id}',[SubCategoryController::class,'getSubCategoryByCategory']);
     Route::resource('tag',TagController::class);
     Route::resource('post',PostController::class);
 

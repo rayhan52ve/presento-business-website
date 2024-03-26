@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->tinyInteger('status')->nullable()->comment('1 = Acrive,2 = Inactive');
             $table->foreignId('category_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('sub_category_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('image')->nullable();
             $table->timestamps();
         });

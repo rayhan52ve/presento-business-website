@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 class PostController extends Controller

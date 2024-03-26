@@ -135,4 +135,10 @@ class SubCategoryController extends Controller
         session()->flash('cls','info');
         return redirect()->route('sub-category.index');
     }
+
+    public function getSubCategoryByCategory(int $id)
+    {
+       $sub_categories = SubCategory::select('id','name')->where('category_id',$id)->get();
+       return response()->json($sub_categories);
+    }
 }

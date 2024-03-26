@@ -19,10 +19,10 @@
           <li class="dropdown"><a href="#"><span><i class="fa-regular fa-user"></i></span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               @if (@Auth::user()->id)
-              <li><a target="_blank" href="{{route('dashboard')}}">Dashboard</a></li>
-              <li><a  href="{{route('logout')}}">Logout</a></li>
+              <li><a href="{{route('dashboard')}}">Dashboard</a></li>
+              <li><a href="{{route('logout')}}">Logout</a></li>
               @else
-              <li><a target="_blank" href="{{route('login')}}">Login</a></li>
+              <li><a href="{{route('login')}}">Login</a></li>
               @endif
             </ul>
           </li>
