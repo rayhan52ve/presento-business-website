@@ -21,12 +21,12 @@
                     @endif
                     <form class="form" method="POST" action="{{ route('post.store') }}">
                         @csrf
-                        <label class="control-label" for="name">Post Name</label>
-                        <input name="name" type="text" placeholder="Post Name" class="form-control"
+                        <label class="control-label" for="name">Post Title</label>
+                        <input name="title" id="title" type="text" placeholder="Post Title" class="form-control"
                             value="{{ old('name') }}">
 
                         <label class="control-label" for="slug">Slug</label>
-                        <input name="slug" type="text" placeholder="Post Slug" class="form-control"
+                        <input name="slug" id="slug" type="text" placeholder="Post Slug" class="form-control"
                             value="{{ old('slug') }}">
 
                         <div class="row">
@@ -58,6 +58,10 @@
                             <option class="text-danger" value="2">Inactive</option>
                         </select>
 
+                        <label class="control-label" for="description">Descripton</label>
+                        <textarea class="form-control" name="description" id="description" cols="30" rows="5"
+                            value="{{ old('description') }}" placeholder="Write a Description..."></textarea>
+
                         <div class="card-footer mt-3">
                             <input class="btn btn-outline-primary form-control" type="submit" value="Save Post">
                         </div>
@@ -67,22 +71,51 @@
             </div>
         </div>
     </div>
+    @push('css')
+        <style>
+            .ck.ck-editor__main>.ck-editor__editable {
+                min-height: 250px;
+            }
+        </style>
+    @endpush
 
     @push('js')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"
+            integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script>
+
+
         <script>
-            $('#category_id').on('change',function(){
+            ClassicEditor
+                .create(document.querySelector('#description'))
+                .catch(error => {
+                    console.error(error);
+                });
+
+
+            $('#category_id').on('change', function() {
                 let category_id = $(this).val();
-                let sub_categories 
+                let sub_categories
                 $('#subCategory_id').empty()
                 $('#subCategory_id').append(`<option selected disabled>Select Sub-Category</option>`)
-                axios.get(window.location.origin+'/admin/get-subcategory/'+category_id).then(res=>{
+                axios.get(window.location.origin + '/admin/get-subcategory/' + category_id).then(res => {
                     sub_categories = res.data
 
                     sub_categories.map((sub_category, index) => {
-                        $('#subCategory_id').append(`<option value="${sub_category.id}">${sub_category.name}</option>`);
+                        $('#subCategory_id').append(
+                            `<option value="${sub_category.id}">${sub_category.name}</option>`);
                     })
                 })
             })
+
+            // slug
+            $('#title').on('input', function() {
+                let name = $(this).val()
+                let slug = name.replaceAll(' ', '-')
+                $('#slug').val(slug.toLowerCase());
+            })
+            // slug
         </script>
     @endpush
 @endsection

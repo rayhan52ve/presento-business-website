@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('title')->nullable();
             $table->string('slug')->nullable();
             $table->tinyInteger('status')->nullable()->comment('1 = Acrive,2 = Inactive');
             $table->foreignId('category_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('sub_category_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });
