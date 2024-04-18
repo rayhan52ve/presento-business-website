@@ -17,11 +17,15 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
-            $table->tinyInteger('status')->nullable()->comment('1 = Acrive,2 = Inactive');
+            $table->tinyInteger('status')->nullable()->comment('1 = Published,0 = Not Published');
+            $table->tinyInteger('is_approved')->nullable()->comment('1 = Approved,0 = Not Approved');
             $table->foreignId('category_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('sub_category_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->text('description')->nullable();
-            $table->string('image')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('admin_comment')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

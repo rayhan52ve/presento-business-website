@@ -11,6 +11,7 @@
     integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('backend/custom-style.css')}}">
 <style>
     /* @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Poppins:ital,wght@0,200;0,300;0,900;1,200&display=swap'); */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,900;1,200&display=swap');

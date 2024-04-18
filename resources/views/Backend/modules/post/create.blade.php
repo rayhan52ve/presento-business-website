@@ -19,19 +19,19 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form" method="POST" action="{{ route('post.store') }}">
+                    <form class="form" method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
                         @csrf
-                        <label class="control-label" for="name">Post Title</label>
+                        <label class="control-label mt-2" for="title">Post Title</label>
                         <input name="title" id="title" type="text" placeholder="Post Title" class="form-control"
                             value="{{ old('name') }}">
 
-                        <label class="control-label" for="slug">Slug</label>
+                        <label class="control-label mt-2" for="slug">Slug</label>
                         <input name="slug" id="slug" type="text" placeholder="Post Slug" class="form-control"
                             value="{{ old('slug') }}">
 
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col-md-6">
-                                <label class="control-label" for="status">Select Category</label>
+                                <label class="control-label" for="category_id">Select Category</label>
                                 <select name="category_id" id="category_id" class="form-control form-select"
                                     value="{{ old('category_id') }}">
                                     <option selected disabled>Select Category</option>
@@ -42,8 +42,8 @@
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label class="control-label" for="status">Select Sub-Category</label>
-                                <select name="subCategory_id" id="subCategory_id" class="form-control form-select">
+                                <label class="control-label" for="subCategory_id">Select Sub-Category</label>
+                                <select name="sub_category_id" id="subCategory_id" class="form-control form-select">
                                     <option selected disabled>Select Sub-Category</option>
 
                                     </option>
@@ -51,18 +51,38 @@
                             </div>
                         </div>
 
-                        <label class="control-label" for="status">Status</label>
+                        <label class="control-label mt-2" for="status">Status</label>
                         <select name="status" class="form-control form-select" value="{{ old('status') }}">
                             <option selected>Select Status</option>
-                            <option class="text-success" value="1">Active</option>
-                            <option class="text-danger" value="2">Inactive</option>
+                            <option class="text-success" value="1" {{ old('status') == "1" ? 'selected' : '' }}>Published</option>
+                            <option class="text-danger" value="0" {{ old('status') == "0" ? 'selected' : '' }}>Not Published</option>
                         </select>
 
-                        <label class="control-label" for="description">Descripton</label>
+                        <label class="control-label mt-2" for="description">Descripton</label>
                         <textarea class="form-control" name="description" id="description" cols="30" rows="5"
                             value="{{ old('description') }}" placeholder="Write a Description..."></textarea>
 
-                        <div class="card-footer mt-3">
+                        <label class="control-label mt-2" for="">Select Tag</label>
+                        </br>
+                        <div class="row">
+                            @foreach ($tags as $tag)
+                                <div class="col-3 col-md-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="{{ $tag->id }}"
+                                            id="flexCheckDefault" name="tag_ids[]">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            {{ $tag->name }}
+                                        </label>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <label class="control-label mt-2" for="">Select Photo</label>
+                        <input type="file" class="form-control" name="photo" id="photo">
+
+
+                        <div class="card-footer mt-4">
                             <input class="btn btn-outline-primary form-control" type="submit" value="Save Post">
                         </div>
                     </form>

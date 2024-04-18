@@ -16,33 +16,95 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-sm" id="DataTbl">
+                            <table
+                                class="table table-sm post-table table-bordered table-striped table-striped-columns text-center"
+                                id="">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">Sl</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Slug</th>
-                                        <th scope="col">Order By</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Created at</th>
-                                        <th scope="col">Updated at</th>
+                                        <th scope="col">
+                                            <p>Title</p>
+                                            <hr>
+                                            <p>Slug</p>
+                                        </th>
+                                        <th scope="col">
+                                            <p>Category</p>
+                                            <hr>
+                                            <p>Sub-Category</p>
+                                        </th>
+                                        <th scope="col">
+                                            <p>Status</p>
+                                            <hr>
+                                            <p>Published</p>
+                                        </th>
+                                        <th>Photo</th>
+                                        <th>Tags</th>
+                                        <th scope="col">
+                                            <p>Created at</p>
+                                            <hr>
+                                            <p>Updated at</p>
+                                            <hr>
+                                            <p>Created By</p>
+                                        </th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php $sl=1 @endphp
-                                    @foreach ($posts as $post)
+                                    @foreach ($posts as $key => $post)
                                         <tr>
 
-                                            <td>{{ $sl++ }}</td>
-                                            <td><b>{{ $post->name }}<b></td>
-                                            <td>{{ $post->slug }}</td>
-                                            <td>{{ $post->order_by }}</td>
-                                            <td>{!! $post->status == 1
-                                                ? "<strong class='text-success' >Active</strong>"
-                                                : "<strong class='text-danger' >Inactive</strong>" !!}</td>
-                                            <td>{{ $post->created_at->format('d-m-y h:i A') }}</td>
-                                            <td>{{ $post->created_at != $post->updated_at ? $post->updated_at->format('d-m-y h:i A') : 'Not Updated' }}
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>
+                                                <p>{{ $post->title }}</p>
+                                                <hr>
+                                                <p>{{ $post->slug }}</p>
+                                            </td>
+                                            <td>
+                                                <p><a
+                                                        href="{{ route('category.show', $post->category->id) }}">{{ $post->category->name }}</a>
+                                                </p>
+                                                <hr>
+                                                <p><a
+                                                        href="{{ route('sub-category.show', $post->sub_category->id) }}">{{ $post->sub_category->name }}</a>
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p>{!! $post->status == 1
+                                                    ? "<strong class='text-success' >Active</strong>"
+                                                    : "<strong class='text-danger' >Inactive</strong>" !!}</p>
+                                                <hr>
+                                                <p>{!! $post->is_approved == 1
+                                                    ? "<strong class='text-light-green' >Approved</strong>"
+                                                    : "<strong class='text-danger' >Not Approved</strong>" !!}</p>
+                                            </td>
+                                            <td>
+                                                <img class="img-thumbnail post-image"
+                                                    data-src="{{ url('uploads/post/original/' . $post->photo) }}"
+                                                    src="{{ url('uploads/post/original/' . $post->photo) }}" alt="">
+                                            </td>
+                                            <td>
+                                                @php
+                                                    $btnColors = [
+                                                        'btn-success',
+                                                        'btn-danger',
+                                                        'btn-info',
+                                                        'btn-warning',
+                                                        'btn-dark',
+                                                    ];
+                                                @endphp
+                                                @foreach ($post->tags as $tag)
+                                                    <a href="{{ route('tag.show', $tag->id) }}"><button
+                                                            class="btn btn-sm mb-1 {{ $btnColors[rand(0, 4)] }}">{{ $tag->name }}</button></a>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                <p>{{ $post->created_at->format('d-m-y h:i A') }}</p>
+                                                <hr>
+                                                <p>{{ $post->created_at != $post->updated_at ? $post->updated_at->format('d-m-y h:i A') : 'Not Updated' }}
+                                                </p>
+                                                <hr>
+                                                <p>{{ $post->user->name }}</p>
                                             </td>
                                             <td>
                                                 <a href="{{ route('post.show', $post) }}"
@@ -64,6 +126,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="mt-2">
+                                {{ $posts->links() }}
+                            </div>
                         </div>
                     </div>
 
@@ -71,57 +136,90 @@
             </div>
         </div>
 
-        @if (session()->has('msg'))
-            @push('js')
-                <script>
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: '{{ session('cls') }}',
-                        toast: 'true',
-                        title: '{{ session('msg') }}',
-                        showConfirmButton: false,
-                        timer: 3000
-                    })
-                </script>
-            @endpush
-        @endif
+        <!-- Button trigger Image Show modal -->
+        <button id="image_show_button" type="button" class="btn btn-primary d-none" data-toggle="modal"
+            data-target="#imageShow">
+        </button>
 
+        <!--Image Show Modal -->
+        <div class="modal fade" id="imageShow" tabindex="-1" role="dialog" aria-labelledby="imageShowTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Post Image</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img class="img-thumbnail" id="display_image" alt="Blog Image">
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    </div>
+
+    @if (session()->has('msg'))
         @push('js')
             <script>
-              $(document).ready(function() {
-                    $('#DataTbl').DataTable({
-                        "paging": true,
-                        "pageLength": 10,
-                        "lengthMenu": [10, 25, 50, 100],
-                        "ordering": true,
-                        "searching": true,
-                        "info": true,
-                        "autoWidth": true,
-                        "responsive": true
-                    });
-                });
-
-                $('.delete').on('click', function() {
-                    let id = $(this).attr('data-id')
-                    // console.log(id)
-
-                    Swal.fire({
-                        title: 'Are you sure you want to delete?',
-                        text: "You won't be able to revert this!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it!'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            $(`#form_${id}`).submit()
-
-                        }
-                    })
+                Swal.fire({
+                    position: 'top-end',
+                    icon: '{{ session('cls') }}',
+                    toast: 'true',
+                    title: '{{ session('msg') }}',
+                    showConfirmButton: false,
+                    timer: 3000
                 })
             </script>
         @endpush
+    @endif
 
-    @endsection
+
+    @push('js')
+        <script>
+            $(document).ready(function() {
+                $('#DataTbl').DataTable({
+                    "paging": true,
+                    "pageLength": 10,
+                    "lengthMenu": [10, 25, 50, 100],
+                    "ordering": true,
+                    "searching": true,
+                    "info": true,
+                    "autoWidth": true,
+                    "responsive": true
+                });
+            });
+
+            $('.delete').on('click', function() {
+                let id = $(this).attr('data-id')
+                // console.log(id)
+
+                Swal.fire({
+                    title: 'Are you sure you want to delete?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(`#form_${id}`).submit()
+
+                    }
+                })
+            })
+
+
+            //show image
+            $('.post-image').on('click', function() {
+                let img = $(this).attr('data-src')
+                $('#display_image').attr('src', img)
+                $('#image_show_button').trigger('click')
+            })
+        </script>
+    @endpush
+
+@endsection
