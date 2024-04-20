@@ -20,55 +20,56 @@
                           {{session('msg')}}
                         </div>
                       @endif --}}
-                      <div class="table-responsive text-nowrap">
-                        <table class="table table-sm" id="categoryDataTbl">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>{{__('SL') }}</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Slug</th>
-                                    <th scope="col">Order By</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Created at</th>
-                                    <th scope="col">Updated at</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php $sl=1 @endphp
-                                @foreach ($categories as $category)
+                        <div class="table-responsive text-nowrap">
+                            <table class="table table-sm" id="categoryDataTbl">
+                                <thead class="table-light">
                                     <tr>
-
-                                        <td>{{ $sl++ }}</td>
-                                        <td><b>{{ $category->name }}<b></td>
-                                        <td>{{ $category->slug }}</td>
-                                        <td>{{ $category->order_by }}</td>
-                                        <td>{!! $category->status == 1
-                                            ? "<strong class='text-success' >Active</strong>"
-                                            : "<strong class='text-danger' >Inactive</strong>" !!}</td>
-                                        <td>{{ $category->created_at->format('d-m-y h:i A') }}</td>
-                                        <td>{{ $category->created_at != $category->updated_at ? $category->updated_at->format('d-m-y h:i A') : 'Not Updated' }}
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('category.show', $category) }}"
-                                                class="btn btn-info btn-sm ml-1 mt-1"><i class="fa-solid fa-eye"></i></a>
-                                            <a href="{{ route('category.edit', $category) }}"
-                                                class="btn btn-success btn-sm ml-1 mt-1"><i
-                                                    class="fa-solid fa-pen-to-square"></i></a>
-                                            <form id="{{ 'form_' . $category->id }}"
-                                                action="{{ route('category.destroy', $category) }}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button data-id="{{ $category->id }}"
-                                                    class="delete btn btn-danger btn-sm ml-1 mt-1" type="button"><i
-                                                        class="fa-solid fa-trash-can"></i></button>
-                                            </form>
-                                        </td>
+                                        <th>{{ __('SL') }}</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Slug</th>
+                                        <th scope="col">Order By</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Created at</th>
+                                        <th scope="col">Updated at</th>
+                                        <th scope="col">Action</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                      </div>
+                                </thead>
+                                <tbody>
+                                    @php $sl=1 @endphp
+                                    @foreach ($categories as $category)
+                                        <tr>
+
+                                            <td>{{ $sl++ }}</td>
+                                            <td><b>{{ $category->name }}<b></td>
+                                            <td>{{ $category->slug }}</td>
+                                            <td>{{ $category->order_by }}</td>
+                                            <td>{!! $category->status == 1
+                                                ? "<strong class='text-success' >Active</strong>"
+                                                : "<strong class='text-danger' >Inactive</strong>" !!}</td>
+                                            <td>{{ $category->created_at->format('d-m-y h:i A') }}</td>
+                                            <td>{{ $category->created_at != $category->updated_at ? $category->updated_at->format('d-m-y h:i A') : 'Not Updated' }}
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('category.show', $category) }}"
+                                                    class="btn btn-info btn-sm ml-1 mt-1"><i
+                                                        class="fa-solid fa-eye"></i></a>
+                                                <a href="{{ route('category.edit', $category) }}"
+                                                    class="btn btn-success btn-sm ml-1 mt-1"><i
+                                                        class="fa-solid fa-pen-to-square"></i></a>
+                                                <form id="{{ 'form_' . $category->id }}"
+                                                    action="{{ route('category.destroy', $category) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button data-id="{{ $category->id }}"
+                                                        class="delete btn btn-danger btn-sm ml-1 mt-1" type="button"><i
+                                                            class="fa-solid fa-trash-can"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                 </div>
@@ -84,6 +85,12 @@
                         toast: 'true',
                         title: '{{ session('msg') }}',
                         showConfirmButton: false,
+                        confirmButtonText: "ok",
+                        timerProgressBar: false,
+                        showCancelButton: false,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        showCloseButton: true,
                         timer: 3000
                     })
                 </script>

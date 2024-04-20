@@ -3,7 +3,7 @@
 @section('page_title', 'Create-post')
 
 @section('content')
-    <div class="container-fluid col-xl-6 col-md-6 mt-5">
+    <div class="container-fluid col-xl-8 col-md-8 mt-5">
         <div class="row justify-content-center">
             <div class="card m-4">
                 <div class="card-header">

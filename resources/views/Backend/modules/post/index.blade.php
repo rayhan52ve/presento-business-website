@@ -35,7 +35,7 @@
                                         <th scope="col">
                                             <p>Status</p>
                                             <hr>
-                                            <p>Published</p>
+                                            <p>Approval</p>
                                         </th>
                                         <th>Photo</th>
                                         <th>Tags</th>
@@ -71,8 +71,8 @@
                                             </td>
                                             <td>
                                                 <p>{!! $post->status == 1
-                                                    ? "<strong class='text-success' >Active</strong>"
-                                                    : "<strong class='text-danger' >Inactive</strong>" !!}</p>
+                                                    ? "<strong class='text-success' >Published</strong>"
+                                                    : "<strong class='text-danger' >Not Published</strong>" !!}</p>
                                                 <hr>
                                                 <p>{!! $post->is_approved == 1
                                                     ? "<strong class='text-light-green' >Approved</strong>"
@@ -170,6 +170,12 @@
                     toast: 'true',
                     title: '{{ session('msg') }}',
                     showConfirmButton: false,
+                    confirmButtonText: "ok",
+                    timerProgressBar: false,
+                    showCancelButton: false,
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    showCloseButton: true,
                     timer: 3000
                 })
             </script>

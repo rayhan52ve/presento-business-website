@@ -85,6 +85,12 @@
                         toast: 'true',
                         title: '{{ session('msg') }}',
                         showConfirmButton: false,
+                        confirmButtonText: "ok",
+                        timerProgressBar: false,
+                        showCancelButton: false,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        showCloseButton: true,
                         timer: 3000
                     })
                 </script>
