@@ -110,7 +110,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostUpdateRequest $request,Post $post)
+    public function update(PostUpdateRequest $request, Post $post)
     {
         // dd($request->all());
         $post_data = $request->except('slug', 'photo', 'tag_ids');
@@ -128,7 +128,7 @@ class PostController extends Controller
             $path = 'uploads/post/original/';
             $thumb_path = 'uploads/post/thumbnail/';
 
-            PhotoUploadController::imageUnlink($path,$post->photo);
+            PhotoUploadController::imageUnlink($path, $post->photo);
             // PhotoUploadController::imageUnlink($thumb_path,$post->photo);
 
             $post_data['photo'] = PhotoUploadController::imageUpload($name, $path, $file);
@@ -148,8 +148,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $path = 'uploads/post/original/';
+        PhotoUploadController::imageUnlink($path, $post->photo);
+        
+        $post->delete();
+        session()->flash('msg', 'Post Deleted Successfully');
+        session()->flash('cls', 'success');
+        return redirect()->back();
     }
 }

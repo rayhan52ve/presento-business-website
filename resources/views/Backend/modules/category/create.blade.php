@@ -22,19 +22,19 @@
                     <form class="form" method="POST" action="{{ route('category.store') }}">
                         @csrf
                         <label class="control-label" for="name">Category Name</label>
-                        <input name="name" id="name" type="text" placeholder="Category Name" class="form-control"
+                        <input name="name" id="name" type="text" placeholder="Category Name" class="form-control @if($errors->all()) {{$errors->has('name') ? 'is-invalid':'is-valid'}} @endif"
                             value="{{ old('name') }}">
 
                         <label class="control-label" for="slug">Slug</label>
-                        <input name="slug" id="slug" type="text" placeholder="Category Slug" class="form-control"
+                        <input name="slug" id="slug" type="text" placeholder="Category Slug" class="form-control @if($errors->all()) {{$errors->has('slug') ? 'is-invalid':'is-valid'}} @endif"
                             value="{{ old('slug') }}">
 
                         <label class="control-label" for="order_by">Category Serial</label>
-                        <input name="order_by" type="number" placeholder="Enter Serial" class="form-control"
+                        <input name="order_by" type="number" placeholder="Enter Serial" class="form-control @if($errors->all()) {{$errors->has('order_by') ? 'is-invalid':'is-valid'}} @endif"
                             value="{{ old('order_by') }}">
 
                         <label class="control-label" for="status">Category Status</label>
-                        <select name="status" class="form-control form-select" value="{{ old('status') }}">
+                        <select name="status" class="form-control form-select @if($errors->all()) {{$errors->has('status') ? 'is-invalid':'is-valid'}} @endif" value="{{ old('status') }}">
                             <option selected disabled>Select Status</option>
                             <option class="text-success" value="1">Active</option>
                             <option class="text-danger" value="2">Inactive</option>

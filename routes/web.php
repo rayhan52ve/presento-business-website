@@ -8,14 +8,21 @@ use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 
 //Frontend
 Route::get('/',[FrontendController::class,'index'])->name('front.home');
 Route::get('/blog',[FrontendController::class,'blog'])->name('front.blog');
-Route::get('/single-blog',[FrontendController::class,'singleBlog'])->name('front.singleBlog');
+Route::get('/blog/search',[FrontendController::class,'search'])->name('front.search');
+Route::get('/blog/category/{slug}',[FrontendController::class,'category'])->name('front.category');
+Route::get('/blog/category/{cat_slug}/{sub_cat_slug}',[FrontendController::class,'subCategory'])->name('front.subCategory');
+Route::get('/blog/tag/{slug}',[FrontendController::class,'tag'])->name('front.tag');
+Route::get('/single-blog/{slug}',[FrontendController::class,'singleBlog'])->name('front.singleBlog');
 Route::get('/portfolio-details',[FrontendController::class,'portfolioDetails'])->name('front.portfolioDetails');
+
+Route::resource('comment',CommentController::class)->only('store')->middleware('auth');
 //Frontend
 
 //Auth

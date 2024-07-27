@@ -41,7 +41,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="col">Status</th>
-                                    <td>{!! $post->status == 1 ? '<b class="text-success">Active</b>' : '<b class="text-danger">Inactive</b>' !!}</td>
+                                    <td>{!! $post->status == 1 ? '<b class="text-success">Published</b>' : '<b class="text-danger">Not Published</b>' !!}</td>
                                 </tr>
                                 <tr>
                                     <th scope="col">Approval</th>
@@ -70,7 +70,7 @@
                                 <tr>
                                     <th scope="col">Photo</th>
                                     <td>
-                                        <img class="img-thumbnail post-image"
+                                        <img class="img-thumbnail post-image" title="Fullscreen View"
                                             data-src="{{ url('uploads/post/original/' . $post->photo) }}"
                                             src="{{ url('uploads/post/original/' . $post->photo) }}" alt="">
                                     </td>
@@ -154,7 +154,7 @@
                         </button>
                     </div>
                     <div class="modal-body text-center">
-                        <img class="img-thumbnail" id="display_image" alt="Blog Image">
+                        <img class="img-thumbnail p-3" width="80%" id="display_image" alt="Blog Image">
                     </div>
                 </div>
             </div>

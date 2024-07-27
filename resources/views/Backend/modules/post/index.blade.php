@@ -62,11 +62,11 @@
                                             </td>
                                             <td>
                                                 <p><a
-                                                        href="{{ route('category.show', $post->category->id) }}">{{ $post->category->name }}</a>
+                                                        href="{{ route('category.show', $post->category->id) }}" title="View Category Details">{{ $post->category->name }}</a>
                                                 </p>
                                                 <hr>
                                                 <p><a
-                                                        href="{{ route('sub-category.show', $post->sub_category->id) }}">{{ $post->sub_category->name }}</a>
+                                                        href="{{ route('sub-category.show', $post->sub_category->id) }}"  title="View Sub-Category Details">{{ $post->sub_category->name }}</a>
                                                 </p>
                                             </td>
                                             <td>
@@ -79,7 +79,7 @@
                                                     : "<strong class='text-danger' >Not Approved</strong>" !!}</p>
                                             </td>
                                             <td>
-                                                <img class="img-thumbnail post-image"
+                                                <img class="img-thumbnail post-image" title="View Image"
                                                     data-src="{{ url('uploads/post/original/' . $post->photo) }}"
                                                     src="{{ url('uploads/post/original/' . $post->photo) }}" alt="">
                                             </td>
@@ -94,8 +94,8 @@
                                                     ];
                                                 @endphp
                                                 @foreach ($post->tags as $tag)
-                                                    <a href="{{ route('tag.show', $tag->id) }}"><button
-                                                            class="btn btn-sm mb-1 {{ $btnColors[rand(0, 4)] }}">{{ $tag->name }}</button></a>
+                                                    <a href="{{ route('tag.show', $tag->id) }}"  title="View Tag Details"><button
+                                                            class="badge btn-sm mb-1 {{ $btnColors[rand(0, 4)] }}">{{ $tag->name }}</button></a>
                                                 @endforeach
                                             </td>
                                             <td>
@@ -108,16 +108,16 @@
                                             </td>
                                             <td>
                                                 <a href="{{ route('post.show', $post) }}"
-                                                    class="btn btn-info btn-sm ml-1 mt-1"><i
+                                                    class="btn btn-info btn-sm ml-1 mt-1" title="Show"><i
                                                         class="fa-solid fa-eye"></i></a>
                                                 <a href="{{ route('post.edit', $post) }}"
-                                                    class="btn btn-success btn-sm ml-1 mt-1"><i
+                                                    class="btn btn-success btn-sm ml-1 mt-1" title="Edit"><i
                                                         class="fa-solid fa-pen-to-square"></i></a>
                                                 <form id="{{ 'form_' . $post->id }}"
                                                     action="{{ route('post.destroy', $post) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button data-id="{{ $post->id }}"
+                                                    <button data-id="{{ $post->id }}" title="Delete"
                                                         class="delete btn btn-danger btn-sm ml-1 mt-1" type="button"><i
                                                             class="fa-solid fa-trash-can"></i></button>
                                                 </form>
@@ -200,7 +200,6 @@
 
             $('.delete').on('click', function() {
                 let id = $(this).attr('data-id')
-                // console.log(id)
 
                 Swal.fire({
                     title: 'Are you sure you want to delete?',
