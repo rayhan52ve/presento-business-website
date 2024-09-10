@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('role')->after('email')->comment('1 = client, 2 = admin')->nullable();
+            $table->integer('role')->after('email')->comment('1 = user, 2 = admin')->default(1);
         });
     }
 

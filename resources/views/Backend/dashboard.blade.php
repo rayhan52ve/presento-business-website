@@ -9,36 +9,85 @@
             <li class="breadcrumb-item active">Cards</li>
         </ol>
         <div class="row">
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-primary text-white mb-4">
-                    <div class="card-body">Primary Card</div>
+            <div class="col-xl-3 col-md-4">
+                <div class="card bg-info text-white mb-4">
+                    <div class="card-header">
+                        <h5>Super Admin</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <h2>5</h2>
+                    </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-3 col-md-4">
                 <div class="card bg-warning text-white mb-4">
-                    <div class="card-body">Warning Card</div>
+                    <div class="card-header">
+                        <h5>Admin</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <h2>6</h2>
+                    </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-3 col-md-4">
                 <div class="card bg-success text-white mb-4">
-                    <div class="card-body">Success Card</div>
+                    <div class="card-header">
+                        <h5>User</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <h2>4</h2>
+                    </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-3 col-md-4">
                 <div class="card bg-danger text-white mb-4">
-                    <div class="card-body">Danger Card</div>
+                    <div class="card-header">
+                        <h5>Blood Donor</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <h2>454</h2>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-4">
+                <div class="card text-white mb-4" style="background-color: rgb(53, 53, 98)">
+                    <div class="card-header">
+                        <h5>Workers</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <h2>345</h2>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="#">View
+                            Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-4">
+                <div class="card text-white mb-4" style="background-color: rgb(79, 164, 79)">
+                    <div class="card-header">
+                        <h5>Others</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <h2>456</h2>
+                    </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>

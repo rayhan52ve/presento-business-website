@@ -76,11 +76,8 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-      
+    {      
         $event = Event::with(['user'])->find($id);
-        //dd($event->with(['user']));
-        // dd($event);
         return view('Backend.modules.event.show',compact('event')); 
     }
 

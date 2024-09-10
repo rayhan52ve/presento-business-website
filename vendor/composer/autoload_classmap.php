@@ -15,6 +15,7 @@ return array(
     'App\\Http\\Controllers\\Backend\\SubCategoryController' => $baseDir . '/app/Http/Controllers/Backend/SubCategoryController.php',
     'App\\Http\\Controllers\\Backend\\TagController' => $baseDir . '/app/Http/Controllers/Backend/TagController.php',
     'App\\Http\\Controllers\\Backend\\UserController' => $baseDir . '/app/Http/Controllers/Backend/UserController.php',
+    'App\\Http\\Controllers\\CommentController' => $baseDir . '/app/Http/Controllers/CommentController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\FrontendController' => $baseDir . '/app/Http/Controllers/FrontendController.php',
     'App\\Http\\Controllers\\PhotoUploadController' => $baseDir . '/app/Http/Controllers/PhotoUploadController.php',

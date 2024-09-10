@@ -1,67 +1,104 @@
 @extends('Backend.layout.master')
 
-@section('page_title','Users List')
-
+@section('page_title', 'Create-category')
 
 @section('content')
-
-@push('css')
-    <link rel="stylesheet" href="{{asset('css/profile/profile.css')}}">
-@endpush
-
-<div class="page-content page-container mt-5" id="page-content">
-    <div class="padding">
-        <div class="row container d-flex justify-content-center">
-<div class="col-xl-6 col-md-12">
-    
-        <div class="card user-card-full">
-            <div class="row m-l-0 m-r-0">
-                <div class="col-sm-4 bg-c-lite-green user-profile">
-                    <div class="card-block text-center text-white">
-                        <div class="m-b-25">
-                            <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
-                        </div>
-                        <h6 class="f-w-600">{{Auth::user()->name}}</h6>
-                        <p>Web Developer</p>
-                        <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+    <div class="container-fluid col-xl-10 col-md-10 mt-5">
+        <div class="row justify-content-between">
+            <div class="col-md-7">
+                <div class="card m-4">
+                    <div class="card-header">
+                        <h3>Profile</h3>
                     </div>
+                    <div class="card-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form class="form" method="POST" action="{{ route('category.store') }}">
+                            @csrf
+                            <label class="control-label" for="name">Name</label>
+                            <input name="name" id="name" type="text" placeholder="Category Name"
+                                class="form-control @if ($errors->all()) {{ $errors->has('name') ? 'is-invalid' : 'is-valid' }} @endif"
+                                value="{{ auth()->user()->name }}">
+
+                            <div class="row mt-2">
+                                <div class="col-md-6">
+                                    <label class="control-label" for="status">Category Status</label>
+                                    <select name="status"
+                                        class="form-control form-select @if ($errors->all()) {{ $errors->has('status') ? 'is-invalid' : 'is-valid' }} @endif"
+                                        value="{{ old('status') }}">
+                                        <option selected disabled>Select Status</option>
+                                        <option class="text-success" value="1">Active</option>
+                                        <option class="text-danger" value="2">Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="control-label" for="status">Category Status</label>
+                                    <select name="status"
+                                        class="form-control form-select @if ($errors->all()) {{ $errors->has('status') ? 'is-invalid' : 'is-valid' }} @endif"
+                                        value="{{ old('status') }}">
+                                        <option selected disabled>Select Status</option>
+                                        <option class="text-success" value="1">Active</option>
+                                        <option class="text-danger" value="2">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="card-footer mt-3">
+                                <input class="btn btn-outline-primary form-control" type="submit" value="Save">
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
-                <div class="col-sm-8">
-                    <div class="card-block">
-                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <p class="m-b-10 f-w-600">Email</p>
-                                <h6 class="text-muted f-w-400">{{Auth::user()->email}}</h6>
-                            </div>
-                            <div class="col-sm-6">
-                                <p class="m-b-10 f-w-600">Phone</p>
-                                <h6 class="text-muted f-w-400">98979989898</h6>
-                            </div>
-                        </div>
-                        <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <p class="m-b-10 f-w-600">Recent</p>
-                                <h6 class="text-muted f-w-400">Sam Disuja</h6>
-                            </div>
-                            <div class="col-sm-6">
-                                <p class="m-b-10 f-w-600">Most Viewed</p>
-                                <h6 class="text-muted f-w-400">Dinoter husainm</h6>
-                            </div>
-                        </div>
-                        <ul class="social-link list-unstyled m-t-40 m-b-10">
-                            <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i class="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i class="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
-                        </ul>
+            </div>
+            <div class="col-md-4">
+                <div class="card m-4">
+                    <div class="card-header">
+                        <h3>Profile Pic</h3>
                     </div>
+                    <div class="card-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form class="form" method="POST" action="">
+                            @csrf
+                            <label class="control-label" for="name">Name</label>
+                            <input name="name" id="name" type="text" placeholder="Category Name"
+                                class="form-control @if ($errors->all()) {{ $errors->has('name') ? 'is-invalid' : 'is-valid' }} @endif"
+                                value="{{ auth()->user()->name }}">
+
+                            <div class="card-footer mt-3">
+                                <input class="btn btn-outline-primary form-control" type="submit" value="Save">
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
+
     </div>
-    </div>
-        </div>
-    </div>
-     
+
+    @push('js')
+        <script>
+            $('#name').on('input', function() {
+                let name = $(this).val()
+                let slug = name.replaceAll(' ', '-')
+                $('#slug').val(slug.toLowerCase());
+            })
+        </script>
+    @endpush
 @endsection

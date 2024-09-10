@@ -546,6 +546,7 @@ class ComposerStaticInit534f738e7b2642d7042ec41652de7a1b
         'App\\Http\\Controllers\\Backend\\SubCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/SubCategoryController.php',
         'App\\Http\\Controllers\\Backend\\TagController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/TagController.php',
         'App\\Http\\Controllers\\Backend\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/UserController.php',
+        'App\\Http\\Controllers\\CommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/CommentController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\FrontendController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontendController.php',
         'App\\Http\\Controllers\\PhotoUploadController' => __DIR__ . '/../..' . '/app/Http/Controllers/PhotoUploadController.php',

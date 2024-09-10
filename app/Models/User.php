@@ -12,10 +12,14 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public const ADMIN = 2;
+    public const USER = 1;
+
     protected $primarykey='id';
     protected $fillable = [
         'name',
         'email',
+        'role',
         'password',
     ];
 

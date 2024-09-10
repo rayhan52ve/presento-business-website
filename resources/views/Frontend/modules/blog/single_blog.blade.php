@@ -85,11 +85,11 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col form-group">
-                                            <textarea name="comment" class="form-control" placeholder="Your Comment*"></textarea>
+                                            <textarea name="comment" class="form-control" placeholder="Your Comment*" required></textarea>
                                         </div>
                                     </div>
                                     <input type="hidden" name="post_id" value="{{ $post->id }}">
-                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id ?? null}}">
                                     <button type="submit" class="btn btn-primary">Post Comment</button>
 
                                 </form>
@@ -117,11 +117,11 @@
                                                 @csrf
                                                 <div class="d-flex">
                                                     <input type="text" name="comment" class="form-control form-control-sm"
-                                                        placeholder="Your Replay*">
+                                                        placeholder="Your Replay*" required>
                                                     <input type="hidden" name="post_id" value="{{ $post->id }}">
-                                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id ?? null }}">
                                                     <input type="hidden" name="comment_id" value="{{ $comment->id }}">
-                                                    <button type="submit" class="btn btn-dark btn-sm">Submit</button>
+                                                    <button type="submit" class="btn btn-dark btn-sm"><i class="fa-solid fa-arrow-right" style="color: #B197FC;"></i></button>
                                                 </div>
 
                                             </form>
