@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\controller;
-
+use App\Models\Division;
 use Illuminate\Http\Request;
 
 class BackendController extends Controller
@@ -18,8 +18,4 @@ class BackendController extends Controller
         return view('Backend.dashboard');
     }
 
-    public function profile()
-    {
-        return view('Backend.modules.profile.profile');
-    }
 }

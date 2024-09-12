@@ -11,8 +11,8 @@
                 </a>
                 <div class="sb-sidenav-menu-heading">Interface</div>
 
-                <a class="nav-link {{ url()->current() == route('profile') ? 'active' : '' }}"
-                    href="{{ route('profile') }}">
+                <a class="nav-link {{ url()->current() == route('profile.index') ? 'active' : '' }}"
+                    href="{{ route('profile.index') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
                     Profile
                 </a>

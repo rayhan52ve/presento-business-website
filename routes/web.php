@@ -9,6 +9,8 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
+use App\Models\Thana;
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,6 +27,11 @@ Route::get('/portfolio-details', [FrontendController::class, 'portfolioDetails']
 Route::resource('comment', CommentController::class)->only('store')->middleware('auth');
 //Frontend
 
+// Division, Districts, Thana, Union
+Route::get('get-districts/{division_id}', [ProfileController::class,'getDistricts']);
+Route::get('get-thanas/{district_id}', [ProfileController::class,'getThanas']);
+Route::get('get-unions/{thana_id}', [ProfileController::class,'getUnions']);
+
 //Auth
 Route::match(['get', 'post'], 'userlogin', [UserController::class, 'login'])->name('login');
 Route::match(['get', 'post'], 'register', [UserController::class, 'register'])->name('register');
@@ -32,7 +39,7 @@ Route::match(['get', 'post'], 'register', [UserController::class, 'register'])->
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     //Backend Routes
     Route::get('/dashboard', [BackendController::class, 'index'])->name('dashboard');
-    Route::get('/profile', [BackendController::class, 'profile'])->name('profile');
+    Route::resource('profile', ProfileController::class);
     Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
     // Route::get('event/create',[EventController::class,'create'])->name('event.create');

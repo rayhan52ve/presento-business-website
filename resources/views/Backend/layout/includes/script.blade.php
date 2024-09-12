@@ -12,4 +12,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"
+    integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 @stack('js')
