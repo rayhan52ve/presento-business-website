@@ -54,8 +54,10 @@
                         <label class="control-label mt-2" for="status">Status</label>
                         <select name="status" class="form-control form-select" value="{{ old('status') }}">
                             <option selected>Select Status</option>
-                            <option class="text-success" value="1" {{ old('status') == "1" ? 'selected' : '' }}>Published</option>
-                            <option class="text-danger" value="0" {{ old('status') == "0" ? 'selected' : '' }}>Not Published</option>
+                            <option class="text-success" value="1" {{ old('status') == '1' ? 'selected' : '' }}>
+                                Published</option>
+                            <option class="text-danger" value="0" {{ old('status') == '0' ? 'selected' : '' }}>Not
+                                Published</option>
                         </select>
 
                         <label class="control-label mt-2" for="description">Descripton</label>
@@ -80,7 +82,7 @@
 
                         <label class="control-label mt-2" for="">Select Photo</label>
                         <input type="file" class="form-control" name="photo" id="photo">
-
+                        <img id="preview" src="#" alt="Image Preview" class="img-fluid rounded shadow img-thumbnail mt-2 border-info" style="max-width: 150px; display: none;">
 
                         <div class="card-footer mt-4">
                             <input class="btn btn-outline-primary form-control" type="submit" value="Save Post">
@@ -136,6 +138,18 @@
                 $('#slug').val(slug.toLowerCase());
             })
             // slug
+
+            // Preview Image
+            document.getElementById('photo').addEventListener('change', function(event) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    const preview = document.getElementById('preview');
+                    preview.src = reader.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            });
+            // Preview Image
         </script>
     @endpush
 @endsection

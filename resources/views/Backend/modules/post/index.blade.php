@@ -61,12 +61,12 @@
                                                 <p>{{ $post->slug }}</p>
                                             </td>
                                             <td>
-                                                <p><a
-                                                        href="{{ route('category.show', $post->category->id) }}" title="View Category Details">{{ $post->category->name }}</a>
+                                                <p><a href="{{ route('category.show', $post->category->id) }}"
+                                                        title="View Category Details">{{ $post->category->name }}</a>
                                                 </p>
                                                 <hr>
-                                                <p><a
-                                                        href="{{ route('sub-category.show', $post->sub_category->id) }}"  title="View Sub-Category Details">{{ $post->sub_category->name }}</a>
+                                                <p><a href="{{ route('sub-category.show', $post->sub_category->id) }}"
+                                                        title="View Sub-Category Details">{{ $post->sub_category->name }}</a>
                                                 </p>
                                             </td>
                                             <td>
@@ -78,10 +78,20 @@
                                                     ? "<strong class='text-light-green' >Approved</strong>"
                                                     : "<strong class='text-danger' >Not Approved</strong>" !!}</p>
                                             </td>
-                                            <td>
+                                            {{-- modal view --}}
+                                            {{-- <td>
                                                 <img class="img-thumbnail post-image" title="View Image"
                                                     data-src="{{ url('uploads/post/original/' . $post->photo) }}"
                                                     src="{{ url('uploads/post/original/' . $post->photo) }}" alt="">
+                                            </td> --}}
+                                            <!-- Lightbox2 Integration -->
+                                            <td>
+                                                <a href="{{ url('uploads/post/original/' . $post->photo) }}"
+                                                    data-lightbox="post-gallery" title="{{$post->title}}">
+                                                    <img class="img-thumbnail"
+                                                        src="{{ url('uploads/post/original/' . $post->photo) }}"
+                                                        alt="{{ $post->title }}">
+                                                </a>
                                             </td>
                                             <td>
                                                 @php
@@ -94,7 +104,8 @@
                                                     ];
                                                 @endphp
                                                 @foreach ($post->tags as $tag)
-                                                    <a href="{{ route('tag.show', $tag->id) }}"  title="View Tag Details"><button
+                                                    <a href="{{ route('tag.show', $tag->id) }}"
+                                                        title="View Tag Details"><button
                                                             class="badge btn-sm mb-1 {{ $btnColors[rand(0, 4)] }}">{{ $tag->name }}</button></a>
                                                 @endforeach
                                             </td>

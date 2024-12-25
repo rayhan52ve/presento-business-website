@@ -70,10 +70,15 @@
                                 <tr>
                                     <th scope="col">Photo</th>
                                     <td>
-                                        <img class="img-thumbnail post-image" title="Fullscreen View"
-                                            data-src="{{ url('uploads/post/original/' . $post->photo) }}"
-                                            src="{{ url('uploads/post/original/' . $post->photo) }}" alt="">
+                                        <a href="{{ url('uploads/post/original/' . $post->photo) }}"
+                                            data-lightbox="post-image" title="{{ $post->title }}">
+                                            <img class="img-thumbnail post-image" title="Fullscreen View"
+                                                src="{{ url('uploads/post/original/' . $post->photo) }}" alt="">
+                                        </a>
+
                                     </td>
+
+
                                 </tr>
                                 <tr>
                                     <th scope="col">Tags</th>
@@ -107,70 +112,41 @@
                     <div class="card-body">
                         <table class="table table-sm table-active">
                             <tbody>
-                              <tr>
-                                <th scope="col">ID</th>
-                                <td><b>{{ $post->user->id }}<b></td>
-                            </tr>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <td>{{ $post->user->name }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="col">Email</th>
-                                <td>{{ $post->user->email }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="col">Created At</th>
-                                <td>{{ $post->created_at->toDayDateTimeString() }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="col">Updated At</th>
-                                <td>{{ $post->created_at != $post->updated_at ? $post->updated_at->toDayDateTimeString() : 'Not Updated' }}
-                                </td>
-                            </tr>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <td><b>{{ $post->user->id }}<b></td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <td>{{ $post->user->name }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Email</th>
+                                    <td>{{ $post->user->email }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Created At</th>
+                                    <td>{{ $post->created_at->toDayDateTimeString() }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Updated At</th>
+                                    <td>{{ $post->created_at != $post->updated_at ? $post->updated_at->toDayDateTimeString() : 'Not Updated' }}
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
 
                 </div>
             </div>
-        
+
 
         </div>
-        <!-- Button trigger Image Show modal -->
-        <button id="image_show_button" type="button" class="btn btn-primary d-none" data-toggle="modal"
-            data-target="#imageShow">
-        </button>
 
-        <!--Image Show Modal -->
-        <div class="modal fade" id="imageShow" tabindex="-1" role="dialog" aria-labelledby="imageShowTitle"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-fullscreen" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle"><i>{{ $post->title }}</i></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body text-center">
-                        <img class="img-thumbnail p-3" width="80%" id="display_image" alt="Blog Image">
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </div>
 
     @push('js')
-        <script>
-            //show image
-            $('.post-image').on('click', function() {
-                let img = $(this).attr('data-src')
-                $('#display_image').attr('src', img)
-                $('#image_show_button').trigger('click')
-            })
-        </script>
     @endpush
 
 @endsection

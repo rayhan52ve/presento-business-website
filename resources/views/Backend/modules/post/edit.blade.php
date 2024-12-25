@@ -52,7 +52,7 @@
                                     <label class="control-label" for="subCategory_id">Select Sub-Category</label>
                                     <select name="sub_category_id" id="subCategory_id" class="form-control form-select">
                                         <option selected disabled>Select Sub-Category</option>
-                                        
+
                                         </option>
                                     </select>
                                 </div>
@@ -78,7 +78,8 @@
                                     <div class="col-3 col-md-3">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="{{ $tag->id }}"
-                                                id="flexCheckDefault" name="tag_ids[]" {{ in_array($tag->id, $selected_tags) ? 'checked' : '' }}>
+                                                id="flexCheckDefault" name="tag_ids[]"
+                                                {{ in_array($tag->id, $selected_tags) ? 'checked' : '' }}>
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 {{ $tag->name }}
                                             </label>
@@ -89,7 +90,11 @@
 
                             <label class="control-label mt-2" for="">Select Photo</label>
                             <input type="file" class="form-control" name="photo" id="photo">
-                            <img class="img-thumbnail my-2" src="{{ url('uploads/post/original/' . $post->photo) }}" style="max-height: 300px;width:300px" alt="">
+                            <img id="preview" class="img-fluid rounded shadow img-thumbnail mt-2 border-info" src="{{ url('uploads/post/original/' . $post->photo) }}"
+                                style="max-height: 200px;" alt="">
+
+                                <img id="preview" src="#" alt="Image Preview" class="img-fluid rounded shadow img-thumbnail mt-2 border-info" style="max-width: 150px; display: none;">
+
 
 
                             <div class="card-footer mt-4">
@@ -129,7 +134,7 @@
                         sub_categories = res.data;
 
                         sub_categories.map((sub_category, index) => {
-                            let selected = (sub_category.id == {{$post->sub_category_id}}) ? 'selected' : '';
+                            let selected = (sub_category.id == {{ $post->sub_category_id }}) ? 'selected' : '';
                             $('#subCategory_id').append(
                                 `<option ${selected}  value="${sub_category.id}" >${sub_category.name}</option>`
                             );
@@ -161,6 +166,18 @@
                 $('#slug').val(slug.toLowerCase());
             })
             // slug
+
+            // Preview Image
+            document.getElementById('photo').addEventListener('change', function(event) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    const preview = document.getElementById('preview');
+                    preview.src = reader.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            });
+            // Preview Image
         </script>
     @endpush
 @endsection
